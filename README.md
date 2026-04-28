@@ -13,7 +13,7 @@ No pressure.
 
 Just breath, movement, and stillness.
 
-👉 Visit: https://stillwater.github.io
+👉 Visit: https://stillwatersensei.github.io
 
 ---
 

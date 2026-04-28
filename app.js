@@ -3,6 +3,7 @@ const screen = document.getElementById("screen");
 let stageIndex = 0;
 let timer = null;
 let remaining = 0;
+let currentStageTime = 0;
 
 const stages = [
   {
@@ -91,15 +92,23 @@ function runStage() {
 
   const s = stages[stageIndex];
   remaining = s.time;
+  currentStageTime = s.time;
 
   screen.innerHTML = `
     <div class="stage-count">Stage ${stageIndex + 1} of ${stages.length}</div>
+    <div class="dots">${buildDots()}</div>
+
     <h2>${s.title}</h2>
     <img src="${s.image}" class="sage-img" alt="${s.title}">
     <p class="prompt">${s.text}</p>
+
     <div class="timer" id="t">${format(remaining)}</div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress"></div>
+    </div>
+
     <button onclick="pause()">Pause</button>
-    <button class="secondary" onclick="next()">Next</button>
     <button class="secondary" onclick="home()">End</button>
   `;
 
@@ -107,8 +116,15 @@ function runStage() {
     remaining--;
 
     const timerDisplay = document.getElementById("t");
+    const progress = document.getElementById("progress");
+
     if (timerDisplay) {
       timerDisplay.textContent = format(remaining);
+    }
+
+    if (progress) {
+      const percent = ((currentStageTime - remaining) / currentStageTime) * 100;
+      progress.style.width = `${percent}%`;
     }
 
     if (remaining <= 0) {
@@ -138,12 +154,19 @@ function resume() {
 
   screen.innerHTML = `
     <div class="stage-count">Stage ${stageIndex + 1} of ${stages.length}</div>
+    <div class="dots">${buildDots()}</div>
+
     <h2>${s.title}</h2>
     <img src="${s.image}" class="sage-img" alt="${s.title}">
     <p class="prompt">${s.text}</p>
+
     <div class="timer" id="t">${format(remaining)}</div>
+
+    <div class="progress-track">
+      <div class="progress-fill" id="progress" style="width:${((currentStageTime - remaining) / currentStageTime) * 100}%"></div>
+    </div>
+
     <button onclick="pause()">Pause</button>
-    <button class="secondary" onclick="next()">Next</button>
     <button class="secondary" onclick="home()">End</button>
   `;
 
@@ -151,8 +174,15 @@ function resume() {
     remaining--;
 
     const timerDisplay = document.getElementById("t");
+    const progress = document.getElementById("progress");
+
     if (timerDisplay) {
       timerDisplay.textContent = format(remaining);
+    }
+
+    if (progress) {
+      const percent = ((currentStageTime - remaining) / currentStageTime) * 100;
+      progress.style.width = `${percent}%`;
     }
 
     if (remaining <= 0) {
@@ -172,10 +202,23 @@ function complete() {
 
   screen.innerHTML = `
     <h2>Session Complete</h2>
+    <div class="dots">${buildCompleteDots()}</div>
     <img src="assets/sage/bow.png" class="sage-img" alt="Sage final bow">
     <p class="prompt">You arrived.<br>You moved.<br>You return.</p>
     <button onclick="home()">Return Home</button>
   `;
+}
+
+function buildDots() {
+  return stages.map((stage, index) => {
+    if (index < stageIndex) return `<span class="dot complete"></span>`;
+    if (index === stageIndex) return `<span class="dot active"></span>`;
+    return `<span class="dot"></span>`;
+  }).join("");
+}
+
+function buildCompleteDots() {
+  return stages.map(() => `<span class="dot complete"></span>`).join("");
 }
 
 function format(s) {

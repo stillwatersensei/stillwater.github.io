@@ -121,3 +121,12 @@ button.secondary {
 .footer-controls {
   margin-top: auto;
 }
+
+.sage-img {
+  width: 260px;
+  max-width: 90%;
+  margin: 18px auto;
+  display: block;
+  border-radius: 22px;
+  animation: breathe 5s ease-in-out infinite;
+}

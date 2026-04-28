@@ -2,322 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stillwater Voice Test v3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stillwater Voice Test v16</title>
+  <link rel="stylesheet" href="style.css?v=16" />
   <style>
-    :root {
-      --deep: #0f2f2f;
-      --water: #1f5f5b;
-      --light: #e8f5f2;
-      --accent: #d8c7a1;
-      --aqua: #6fd3c8;
-      --panel: rgba(255,255,255,0.08);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, var(--water), var(--deep));
-      color: var(--light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-
-    .card {
-      width: 100%;
-      max-width: 560px;
-      border-radius: 28px;
-      background: var(--panel);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-      padding: 28px;
-      text-align: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border: 2px solid rgba(232,245,242,0.82);
-      border-radius: 50%;
-      position: relative;
-      box-shadow: 0 0 18px rgba(216,199,161,0.16);
-    }
-
-    .brand-mark::after {
-      content: "";
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: 0.05em;
-    }
-
-    h2 {
-      color: var(--accent);
-      margin-top: 22px;
-    }
-
-    p { line-height: 1.5; }
-
-    textarea {
-      width: 100%;
-      min-height: 120px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.08);
-      color: var(--light);
-      padding: 14px;
-      font-size: 1rem;
-      resize: vertical;
-    }
-
-    select, input {
-      width: 100%;
-      margin: 8px 0 16px;
-      padding: 10px;
-      border-radius: 14px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    label {
-      display: block;
-      text-align: left;
-      margin-top: 12px;
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-
-    button {
-      border: none;
-      border-radius: 30px;
-      padding: 13px 20px;
-      margin: 7px;
-      font-size: 1rem;
-      cursor: pointer;
-      background: var(--aqua);
-      color: var(--deep);
-      font-weight: bold;
-    }
-
-    button.secondary {
-      background: transparent;
-      border: 1px solid var(--light);
-      color: var(--light);
-    }
-
-    .status {
-      margin-top: 12px;
-      color: var(--accent);
-      font-size: 0.95rem;
-    }
-
-    .note {
-      font-size: 0.9rem;
-      opacity: 0.82;
-    }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    @media (max-width: 520px) {
-      .row { grid-template-columns: 1fr; }
-    }
+    .test-wrap { max-width: 760px; margin: 24px auto; background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 24px; box-shadow: var(--shadow); }
+    textarea, select { width: 100%; border: 1px solid var(--line); border-radius: 16px; padding: 12px; color: var(--ink); background: rgba(255,255,255,0.72); }
+    textarea { min-height: 130px; resize: vertical; }
+    .stack { display: grid; gap: 14px; }
   </style>
 </head>
-
 <body>
-  <main class="card">
-    <div class="brand">
-      <div class="brand-mark"></div>
-      <h1>Stillwater</h1>
-    </div>
-
-    <p class="note">
-      Voice + music test using the browser voice and your real MP3: <strong>assets/audio/closing.mp3</strong>
-    </p>
-
-    <h2>Sage Voice Line</h2>
-
-    <textarea id="voiceText">Let the breath rise and fall. Sit tall with both feet grounded. Inhale gently as the hands float up. Exhale as they settle back down.</textarea>
-
-    <label for="voiceSelect">Browser Voice</label>
-    <select id="voiceSelect"></select>
-
-    <div class="row">
-      <div>
-        <label for="rate">Voice Speed</label>
-        <input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="0.82">
+  <div class="app-shell">
+    <header class="hero">
+      <div class="brand-lockup">
+        <div class="still-point"><span></span></div>
+        <div><h1>Voice Test</h1><p>Browser SpeechSynthesis sandbox</p></div>
       </div>
+      <a class="ghost-button" href="index.html?v=16">Back to app</a>
+    </header>
 
-      <div>
-        <label for="pitch">Voice Pitch</label>
-        <input id="pitch" type="range" min="0.6" max="1.3" step="0.05" value="0.88">
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label for="voiceVolume">Voice Volume</label>
-        <input id="voiceVolume" type="range" min="0.1" max="1" step="0.05" value="0.9">
-      </div>
-
-      <div>
-        <label for="musicVolume">Music Volume</label>
-        <input id="musicVolume" type="range" min="0" max="1" step="0.05" value="0.45">
-      </div>
-    </div>
-
-    <div>
-      <button onclick="playBoth()">Play Voice + Music</button>
-      <button class="secondary" onclick="voiceOnly()">Voice Only</button>
-      <button class="secondary" onclick="musicOnly()">Music Only</button>
-      <button class="secondary" onclick="stopAll()">Stop</button>
-    </div>
-
-    <p id="status" class="status">Ready.</p>
-    <p class="note">
-      Browser voices vary by device. This is only a test. For a finished Sage voice, real recorded/generated voice files will sound better.
-    </p>
-  </main>
+    <main class="test-wrap stack">
+      <p class="hint">Browser voices vary by device. This page is for testing only. The main v16 app is built to prefer real local Sage voice MP3 files.</p>
+      <label>Voice
+        <select id="voiceSelect"></select>
+      </label>
+      <label>Test line
+        <textarea id="voiceText">Welcome to Stillwater. Sit comfortably, soften your shoulders, and let the breath become calm.</textarea>
+      </label>
+      <div class="slider-row"><label for="rate">Speed</label><input id="rate" type="range" min="0.6" max="1.2" step="0.05" value="0.86" /></div>
+      <div class="slider-row"><label for="pitch">Pitch</label><input id="pitch" type="range" min="0.7" max="1.3" step="0.05" value="0.95" /></div>
+      <div class="slider-row"><label for="volume">Volume</label><input id="volume" type="range" min="0" max="1" step="0.01" value="0.9" /></div>
+      <div class="controls"><button id="speak" class="primary" type="button">Speak</button><button id="stop" type="button">Stop</button></div>
+    </main>
+  </div>
 
   <script>
-    const voiceSelect = document.getElementById("voiceSelect");
-    const statusText = document.getElementById("status");
-    const musicVolume = document.getElementById("musicVolume");
-
+    const voiceSelect = document.getElementById('voiceSelect');
+    const voiceText = document.getElementById('voiceText');
+    const rate = document.getElementById('rate');
+    const pitch = document.getElementById('pitch');
+    const volume = document.getElementById('volume');
     let voices = [];
-    let audio = new Audio("assets/audio/closing.mp3");
-    audio.loop = true;
-    audio.volume = parseFloat(musicVolume.value);
-
-    musicVolume.addEventListener("input", () => {
-      audio.volume = parseFloat(musicVolume.value);
-    });
 
     function loadVoices() {
-      voices = window.speechSynthesis.getVoices();
-      voiceSelect.innerHTML = "";
-
-      if (!voices.length) {
-        const option = document.createElement("option");
-        option.textContent = "No voices loaded yet. Try refreshing.";
-        voiceSelect.appendChild(option);
-        return;
-      }
-
+      voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+      voiceSelect.innerHTML = '';
       voices.forEach((voice, index) => {
-        const option = document.createElement("option");
+        const option = document.createElement('option');
         option.value = index;
-        option.textContent = `${voice.name} (${voice.lang})`;
+        option.textContent = `${voice.name} (${voice.lang})${voice.default ? ' default' : ''}`;
         voiceSelect.appendChild(option);
       });
-
-      const preferredIndex = voices.findIndex(v =>
-        v.lang.startsWith("en") &&
-        (
-          v.name.toLowerCase().includes("samantha") ||
-          v.name.toLowerCase().includes("daniel") ||
-          v.name.toLowerCase().includes("google") ||
-          v.name.toLowerCase().includes("microsoft") ||
-          v.name.toLowerCase().includes("alex")
-        )
-      );
-
-      if (preferredIndex >= 0) {
-        voiceSelect.value = preferredIndex;
-      }
     }
 
-    if ("speechSynthesis" in window) {
+    document.getElementById('speak').addEventListener('click', () => {
+      if (!window.speechSynthesis) return alert('SpeechSynthesis is not available in this browser.');
+      speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(voiceText.value);
+      utterance.voice = voices[Number(voiceSelect.value)] || null;
+      utterance.rate = Number(rate.value);
+      utterance.pitch = Number(pitch.value);
+      utterance.volume = Number(volume.value);
+      speechSynthesis.speak(utterance);
+    });
+
+    document.getElementById('stop').addEventListener('click', () => speechSynthesis && speechSynthesis.cancel());
+    if ('speechSynthesis' in window) {
       loadVoices();
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    } else {
-      statusText.textContent = "Speech synthesis is not supported in this browser.";
-    }
-
-    function playBoth() {
-      audio.play().catch(() => {
-        statusText.textContent = "Music was blocked. Tap Music Only once, then try again.";
-      });
-      setTimeout(speak, 350);
-    }
-
-    function voiceOnly() {
-      stopMusic();
-      speak();
-    }
-
-    function musicOnly() {
-      stopVoice();
-      audio.play()
-        .then(() => statusText.textContent = "Music is playing.")
-        .catch(() => statusText.textContent = "Music was blocked by this browser.");
-    }
-
-    function speak() {
-      if (!("speechSynthesis" in window)) {
-        statusText.textContent = "Speech synthesis is not supported in this browser.";
-        return;
-      }
-
-      window.speechSynthesis.cancel();
-
-      const text = document.getElementById("voiceText").value;
-      const utterance = new SpeechSynthesisUtterance(text);
-
-      const selectedVoice = voices[voiceSelect.value];
-      if (selectedVoice) utterance.voice = selectedVoice;
-
-      utterance.rate = parseFloat(document.getElementById("rate").value);
-      utterance.pitch = parseFloat(document.getElementById("pitch").value);
-      utterance.volume = parseFloat(document.getElementById("voiceVolume").value);
-
-      utterance.onstart = () => statusText.textContent = "Sage is speaking...";
-      utterance.onend = () => statusText.textContent = audio.paused ? "Voice finished." : "Voice finished. Music continues.";
-
-      window.speechSynthesis.speak(utterance);
-    }
-
-    function stopMusic() {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-
-    function stopVoice() {
-      if ("speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
-    }
-
-    function stopAll() {
-      stopMusic();
-      stopVoice();
-      statusText.textContent = "Stopped.";
+      speechSynthesis.onvoiceschanged = loadVoices;
     }
   </script>
 </body>

@@ -1,102 +1,45 @@
-# stillwater.github.io
-Open source wellness app to help you develop personalized Chair Tai Chi and Qigong routines. Designed for accessibility and adaptability, this can help users improve their mobility, reduce pain, and build functional strength…all guided by an intelligent coach.
+# Stillwater Sensei v16
 
-# 🌊 Stillwater
+Browser-based Chair Tai Chi + Qigong guided practice led by Sage the Stillwater Sensei.
 
-A quiet place to return to… guided by Sage the Stillwater Sensei 🐼
+## v16 focus
 
-Stillwater is an open-source, browser-based wellness experience that blends Chair Tai Chi and Qigong into a calm, guided flow.
+- Complete drop-in GitHub Pages bundle
+- Local MP3 music support
+- Modular local Sage voice MP3 system
+- Voice volume and music volume controls
+- Browser voice testing retained in `voicetest.html`
+- Cache-busted CSS and JS references using `?v=16`
+- iPad Safari friendly, no external dependencies
 
-There are no accounts.  
-No ads.  
-No pressure.  
+## Expected assets
 
-Just breath, movement, and stillness.
+Sage images:
 
-👉 Visit: https://stillwatersensei.github.io
+- `assets/sage/idle.png`
+- `assets/sage/breath.png`
+- `assets/sage/lift-flow.png`
+- `assets/sage/flowing-arms.png`
+- `assets/sage/gather-qi.png`
+- `assets/sage/stillness.png`
+- `assets/sage/closing.png`
+- `assets/sage/bow.png`
 
----
+Music files:
 
-## 🧘 What It Does
+- `assets/audio/breath.mp3`
+- `assets/audio/flow.mp3`
+- `assets/audio/stillness.mp3`
+- `assets/audio/closing.mp3`
 
-Stillwater guides users through a simple, structured flow:
+Voice files expected by v16:
 
-1. 🌬 Awakening Breath  
-2. 🌿 Flow Practice  
-3. 🌫 Return to Stillness  
-4. 🌊 Deep Flow  
-5. 🌙 Closing Stillness  
+- `assets/voice/01-awakening-breath.mp3`
+- `assets/voice/02-lift-flow.mp3`
+- `assets/voice/03-flowing-arms.mp3`
+- `assets/voice/04-gather-qi.mp3`
+- `assets/voice/05-stillness.mp3`
+- `assets/voice/06-closing.mp3`
+- `assets/voice/07-final-bow.mp3`
 
-Each session is designed to:
-- Improve mobility  
-- Reduce stiffness  
-- Build calm, controlled movement  
-- Support people with limited mobility or chronic pain  
-
----
-
-## 🐼 Meet Sage
-
-Sage is a calm, minimal 2D panda sensei who guides each session.
-
-No hype.  
-No pressure.  
-Just quiet guidance.
-
----
-
-## 🌍 Open Source Philosophy
-
-Stillwater is:
-
-- Free to use  
-- Free to modify  
-- Free to share  
-
-We believe wellness tools should be accessible to everyone.
-
----
-
-## 🛠 Tech Stack
-
-- HTML / CSS / JavaScript  
-- GitHub Pages (hosting)  
-- No backend required (yet)  
-
----
-
-## 🚀 Getting Started (Local)
-
-Clone the repo:
-
-bash git clone https://github.com/stillwatersensei/stillwater.github.io.git 
-
-Open index.html in your browser.
-
----
-
-## 🤝 Contributing
-
-We welcome contributions in:
-
-- UI/UX improvements  
-- Animation (Sage poses)  
-- New guided routines  
-- Accessibility improvements  
-- Performance optimization  
-
----
-
-## 📜 License
-
-MIT License — use it freely.
-
----
-
-## 🌊 Final Thought
-
-Stillwater is not just an app…
-
-It’s a place.
-
-A place you can return to, anytime.
+Missing voice files are skipped gracefully.

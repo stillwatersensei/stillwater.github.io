@@ -2,16 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stillwater</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stillwater Sensei | Chair Tai Chi + Qigong</title>
+  <meta name="description" content="Stillwater Sensei is a peaceful browser-based chair Tai Chi and Qigong guided practice led by Sage, a calm panda guide." />
   <link rel="stylesheet" href="style.css?v=16" />
 </head>
 <body>
-  <main class="app">
-    <aside id="pathPanel" class="side-panel path-panel hidden"></aside>
-    <section id="screen" class="screen"><h1>Stillwater is loading...</h1></section>
-    <aside id="resourcePanel" class="side-panel resource-panel hidden"></aside>
-  </main>
+  <div class="app-shell">
+    <header class="hero">
+      <div class="brand-lockup" aria-label="Stillwater Sensei">
+        <div class="still-point" aria-hidden="true"><span></span></div>
+        <div>
+          <h1>Stillwater</h1>
+          <p>Find your center</p>
+        </div>
+      </div>
+      <button id="soundToggle" class="ghost-button" type="button" aria-pressed="false">Sound Off</button>
+    </header>
+
+    <main class="practice-layout">
+      <aside class="path-panel" aria-label="Stillwater Path progress">
+        <h2>Stillwater Path</h2>
+        <ol id="stageList" class="stage-list"></ol>
+      </aside>
+
+      <section class="practice-card" aria-live="polite">
+        <div class="sage-frame">
+          <img id="sageImage" src="assets/sage/idle.png" alt="Sage the Stillwater Sensei seated calmly" />
+        </div>
+
+        <div class="stage-copy">
+          <p id="stageEyebrow" class="eyebrow">Welcome</p>
+          <h2 id="stageTitle">Stillwater Sensei</h2>
+          <p id="stageDescription">A gentle seated practice for breath, flow, and calm focus.</p>
+        </div>
+
+        <div class="timer-wrap" aria-label="Stage timer">
+          <div class="timer-ring">
+            <span id="timerText">Ready</span>
+          </div>
+          <div class="progress-track" aria-hidden="true"><span id="progressFill"></span></div>
+        </div>
+
+        <div class="controls">
+          <button id="backButton" type="button">Back</button>
+          <button id="startPauseButton" class="primary" type="button">Begin</button>
+          <button id="nextButton" type="button">Forward</button>
+        </div>
+
+        <details class="audio-panel">
+          <summary>Sound & Voice Controls</summary>
+          <div class="slider-row">
+            <label for="musicVolume">Music</label>
+            <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.55" />
+          </div>
+          <div class="slider-row">
+            <label for="voiceVolume">Voice</label>
+            <input id="voiceVolume" type="range" min="0" max="1" step="0.01" value="0.9" />
+          </div>
+          <label class="check-row">
+            <input id="voiceEnabled" type="checkbox" checked />
+            Use local Sage voice MP3 files when available
+          </label>
+          <p class="hint">v16 looks for stage voice files in <code>assets/voice/</code>. Missing files are skipped gracefully.</p>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>No ads. No accounts. No pressure. Just stillness within movement.</p>
+      <p class="version">Stillwater v16</p>
+    </footer>
+  </div>
+
   <script src="app.js?v=16"></script>
 </body>
 </html>

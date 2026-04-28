@@ -52,7 +52,12 @@ const stages = [
 function home() {
   clearInterval(timer);
 
-  screen.innerHTML =     <h1>🌊 Stillwater</h1>     <img src="assets/sage/idle.png" class="sage-img">     <p class="prompt">Come as you are.</p>     <button onclick="start()">Begin</button>  ;
+  screen.innerHTML = `
+    <h1>🌊 Stillwater</h1>
+    <img src="assets/sage/idle.png" class="sage-img" alt="Sage idle">
+    <p class="prompt">Come as you are.</p>
+    <button onclick="start()">Begin</button>
+  `;
 }
 
 function start() {
@@ -71,7 +76,14 @@ function runStage() {
   const s = stages[stageIndex];
   remaining = s.time;
 
-  screen.innerHTML =     <h2>${s.title}</h2>     <img src="${s.image}" class="sage-img">     <p class="prompt">${s.text}</p>     <div class="timer" id="t">${format(remaining)}</div>     <button onclick="next()">Next</button>     <button class="secondary" onclick="home()">End</button>  ;
+  screen.innerHTML = `
+    <h2>${s.title}</h2>
+    <img src="${s.image}" class="sage-img" alt="${s.title}">
+    <p class="prompt">${s.text}</p>
+    <div class="timer" id="t">${format(remaining)}</div>
+    <button onclick="next()">Next</button>
+    <button class="secondary" onclick="home()">End</button>
+  `;
 
   timer = setInterval(() => {
     remaining--;
@@ -89,7 +101,12 @@ function next() {
 function complete() {
   clearInterval(timer);
 
-  screen.innerHTML =     <h2>Session Complete</h2>     <img src="assets/sage/bow.png" class="sage-img">     <p class="prompt">You have returned to stillness.</p>     <button onclick="home()">Restart</button>  ;
+  screen.innerHTML = `
+    <h2>Session Complete</h2>
+    <img src="assets/sage/bow.png" class="sage-img" alt="Sage bow">
+    <p class="prompt">You have returned to stillness.</p>
+    <button onclick="home()">Restart</button>
+  `;
 }
 
 function format(s) {

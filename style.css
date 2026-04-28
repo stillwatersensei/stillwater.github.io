@@ -102,6 +102,50 @@ body {
   box-shadow: 0 0 12px rgba(216,199,161,0.7);
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 auto 12px;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(232,245,242,0.82);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 18px rgba(216,199,161,0.16);
+}
+
+.brand-mark::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.brand-title {
+  font-size: 2.1rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.brand-subtitle {
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.78;
+  margin-top: 6px;
+}
+
 h1 {
   margin: 0 0 10px;
   font-size: 2.35rem;
@@ -251,4 +295,26 @@ button.secondary {
   }
 
   .sage-img { width: 240px; }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .brand-mark::after {
+    width: 8px;
+    height: 8px;
+  }
+
+  .brand-title {
+    font-size: 1.65rem;
+  }
+
+  .brand-subtitle {
+    font-size: 0.72rem;
+  }
 }

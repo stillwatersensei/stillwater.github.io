@@ -79,6 +79,18 @@ const stages = [
   }
 ];
 
+function brandLogo() {
+  return `
+    <div class="brand" aria-label="Stillwater">
+      <div class="brand-mark" aria-hidden="true"></div>
+      <div>
+        <div class="brand-title">Stillwater</div>
+        <div class="brand-subtitle">Find your center</div>
+      </div>
+    </div>
+  `;
+}
+
 function musicButton() {
   return `<button class="secondary music-toggle" onclick="toggleMusic()">${musicOn ? "Music Off" : "Music On"}</button>`;
 }
@@ -105,7 +117,7 @@ function home() {
   setHomeLayout();
 
   screen.innerHTML = `
-    <h1>🌊 Stillwater</h1>
+    ${brandLogo()}
     <img src="assets/sage/idle.png" class="sage-img" alt="Sage the Stillwater Sensei">
     <p class="prompt">Come as you are.</p>
     <div class="controls">
@@ -125,6 +137,7 @@ function showPlan() {
   const list = stages.map(stage => `<li><strong>${stage.title}</strong> · ${stage.time}s</li>`).join("");
 
   screen.innerHTML = `
+    ${brandLogo()}
     <h2>Today’s Path</h2>
     <img src="assets/sage/idle.png" class="sage-img" alt="Sage preparing the session">
     <p class="prompt">A short seated practice is ready.</p>
@@ -259,6 +272,7 @@ function complete() {
   }
 
   screen.innerHTML = `
+    ${brandLogo()}
     <h2>Session Complete</h2>
     <img src="assets/sage/bow.png" class="sage-img" alt="Sage final bow">
     <p class="prompt">You arrived.<br>You moved.<br>You return.</p>
@@ -321,9 +335,7 @@ function playStageMusic(src) {
     audio.setAttribute("data-src", src);
   }
 
-  audio.play().catch(() => {
-    // Some browsers require another user tap before audio starts.
-  });
+  audio.play().catch(() => {});
 }
 
 function stopMusic() {

@@ -4,7 +4,7 @@
   --light: #e8f5f2;
   --accent: #d8c7a1;
   --aqua: #6fd3c8;
-  --soft-panel: rgba(255,255,255,0.08);
+  --panel: rgba(255,255,255,0.08);
 }
 
 * {
@@ -14,12 +14,12 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #1f5f5b, #0f2f2f);
+  background: radial-gradient(circle at top, var(--water), var(--deep));
   color: var(--light);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app {
@@ -29,12 +29,12 @@ body {
 }
 
 .screen {
-  text-align: center;
+  min-height: 640px;
   padding: 24px;
   border-radius: 24px;
-  background: var(--soft-panel);
+  background: var(--panel);
   box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-  min-height: 640px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -61,7 +61,7 @@ h2 {
 }
 
 @keyframes breathe {
-  0%,100% { transform: scale(1); }
+  0%, 100% { transform: scale(1); }
   50% { transform: scale(1.045); }
 }
 
@@ -77,8 +77,8 @@ h2 {
 
 .timer {
   font-size: 2.4rem;
-  margin: 12px 0;
   color: var(--accent);
+  margin: 12px 0;
 }
 
 .stage-count {
@@ -133,7 +133,7 @@ button {
   font-size: 1rem;
   cursor: pointer;
   background: var(--aqua);
-  color: #0f2f2f;
+  color: var(--deep);
   font-weight: bold;
 }
 

@@ -1,45 +1,50 @@
-# Stillwater Sensei v16
+# Stillwater Sensei v16.1
 
-Browser-based Chair Tai Chi + Qigong guided practice led by Sage the Stillwater Sensei.
+Stillwater Sensei is an open-source, browser-based Chair Tai Chi + Qigong guided practice app led by Sage, a calm 2D panda guide.
 
-## v16 focus
+## v16.1 updates
 
-- Complete drop-in GitHub Pages bundle
-- Local MP3 music support
-- Modular local Sage voice MP3 system
-- Voice volume and music volume controls
-- Browser voice testing retained in `voicetest.html`
-- Cache-busted CSS and JS references using `?v=16`
-- iPad Safari friendly, no external dependencies
+- Added four audio modes:
+  - Play Voice + Music
+  - Voice Only
+  - Music Only
+  - Silence
+- Voice now tries local MP3 files first.
+- If local voice MP3 files are missing, voice falls back to built-in browser speech synthesis.
+- Added right-side Resources panel to balance the Stillwater Path panel.
+- Added `history.html` with a quick overview of Tai Chi and Qigong.
+- Bumped cache versions to `v=16.1` for CSS, JS, images, and page links.
 
-## Expected assets
+## Required / expected music files
 
-Sage images:
+Place in `assets/audio/`:
 
-- `assets/sage/idle.png`
-- `assets/sage/breath.png`
-- `assets/sage/lift-flow.png`
-- `assets/sage/flowing-arms.png`
-- `assets/sage/gather-qi.png`
-- `assets/sage/stillness.png`
-- `assets/sage/closing.png`
-- `assets/sage/bow.png`
+- `breath.mp3`
+- `flow.mp3`
+- `stillness.mp3`
+- `closing.mp3`
 
-Music files:
+## Optional local voice files
 
-- `assets/audio/breath.mp3`
-- `assets/audio/flow.mp3`
-- `assets/audio/stillness.mp3`
-- `assets/audio/closing.mp3`
+Place in `assets/voice/`:
 
-Voice files expected by v16:
+- `01-awakening-breath.mp3`
+- `02-lift-flow.mp3`
+- `03-flowing-arms.mp3`
+- `04-gather-qi.mp3`
+- `05-stillness.mp3`
+- `06-closing.mp3`
+- `07-final-bow.mp3`
 
-- `assets/voice/01-awakening-breath.mp3`
-- `assets/voice/02-lift-flow.mp3`
-- `assets/voice/03-flowing-arms.mp3`
-- `assets/voice/04-gather-qi.mp3`
-- `assets/voice/05-stillness.mp3`
-- `assets/voice/06-closing.mp3`
-- `assets/voice/07-final-bow.mp3`
+If these are missing, the app uses browser speech synthesis as a temporary fallback.
 
-Missing voice files are skipped gracefully.
+## GitHub Pages testing
+
+After upload, test with cache-busting URLs:
+
+- `https://stillwatersensei.github.io/?v=16.1`
+- `https://stillwatersensei.github.io/app.js?v=16.1`
+- `https://stillwatersensei.github.io/style.css?v=16.1`
+- `https://stillwatersensei.github.io/history.html?v=16.1`
+
+Created by David Fliesen in 2026.

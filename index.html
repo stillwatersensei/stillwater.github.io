@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stillwater Sensei | Chair Tai Chi + Qigong</title>
   <meta name="description" content="Stillwater Sensei is a peaceful browser-based chair Tai Chi and Qigong guided practice led by Sage, a calm panda guide." />
-  <link rel="stylesheet" href="style.css?v=16" />
+  <link rel="stylesheet" href="style.css?v=16.1" />
 </head>
 <body>
   <div class="app-shell">
@@ -17,10 +17,10 @@
           <p>Find your center</p>
         </div>
       </div>
-      <button id="soundToggle" class="ghost-button" type="button" aria-pressed="false">Sound Off</button>
+      <button id="soundToggle" class="ghost-button" type="button" aria-pressed="false">Silence</button>
     </header>
 
-    <main class="practice-layout">
+    <main class="practice-layout three-column">
       <aside class="path-panel" aria-label="Stillwater Path progress">
         <h2>Stillwater Path</h2>
         <ol id="stageList" class="stage-list"></ol>
@@ -28,7 +28,7 @@
 
       <section class="practice-card" aria-live="polite">
         <div class="sage-frame">
-          <img id="sageImage" src="assets/sage/idle.png" alt="Sage the Stillwater Sensei seated calmly" />
+          <img id="sageImage" src="assets/sage/idle.png?v=16.1" alt="Sage the Stillwater Sensei seated calmly" />
         </div>
 
         <div class="stage-copy">
@@ -50,8 +50,15 @@
           <button id="nextButton" type="button">Forward</button>
         </div>
 
-        <details class="audio-panel">
-          <summary>Sound & Voice Controls</summary>
+        <section class="audio-panel" aria-label="Sound and voice controls">
+          <h3>Sound & Voice</h3>
+          <div class="mode-grid" role="group" aria-label="Audio mode">
+            <button id="modeBoth" class="mode-button" type="button" data-mode="both">Play Voice + Music</button>
+            <button id="modeVoice" class="mode-button" type="button" data-mode="voice">Voice Only</button>
+            <button id="modeMusic" class="mode-button" type="button" data-mode="music">Music Only</button>
+            <button id="modeSilence" class="mode-button" type="button" data-mode="silence">Silence</button>
+          </div>
+
           <div class="slider-row">
             <label for="musicVolume">Music</label>
             <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.55" />
@@ -60,21 +67,28 @@
             <label for="voiceVolume">Voice</label>
             <input id="voiceVolume" type="range" min="0" max="1" step="0.01" value="0.9" />
           </div>
-          <label class="check-row">
-            <input id="voiceEnabled" type="checkbox" checked />
-            Use local Sage voice MP3 files when available
-          </label>
-          <p class="hint">v16 looks for stage voice files in <code>assets/voice/</code>. Missing files are skipped gracefully.</p>
-        </details>
+          <p id="voiceStatus" class="hint">Voice uses local MP3 files when present and falls back to built-in browser speech when files are missing.</p>
+        </section>
       </section>
+
+      <aside class="resources-panel" aria-label="Stillwater resources">
+        <h2>Resources</h2>
+        <nav class="resource-links" aria-label="Helpful Tai Chi and Qigong links">
+          <a href="https://www.qigonginstitute.org/directory" target="_blank" rel="noopener noreferrer">Find a local Tai Chi / Qigong instructor</a>
+          <a href="https://www.va.gov/WHOLEHEALTH/cih/Tai_Chi_and_Qigong.asp" target="_blank" rel="noopener noreferrer">Learn about VA Tai Chi for Vets</a>
+          <a href="history.html?v=16.1">History of Tai Chi and Qigong</a>
+          <a href="https://davidfliesen.github.io/" target="_blank" rel="noopener noreferrer">About the developer</a>
+        </nav>
+        <p class="creator-note">Created by David Fliesen in 2026</p>
+      </aside>
     </main>
 
     <footer>
       <p>No ads. No accounts. No pressure. Just stillness within movement.</p>
-      <p class="version">Stillwater v16</p>
+      <p class="version">Stillwater v16.1</p>
     </footer>
   </div>
 
-  <script src="app.js?v=16"></script>
+  <script src="app.js?v=16.1"></script>
 </body>
 </html>

@@ -25,12 +25,15 @@ body {
 }
 
 button, input { font: inherit; }
+a { color: inherit; }
 
 .app-shell {
-  width: min(1180px, calc(100% - 28px));
+  width: min(1360px, calc(100% - 28px));
   margin: 0 auto;
   padding: 20px 0 28px;
 }
+
+.simple-page { width: min(980px, calc(100% - 28px)); }
 
 .hero, footer {
   display: flex;
@@ -39,7 +42,8 @@ button, input { font: inherit; }
   gap: 16px;
 }
 
-.brand-lockup { display: flex; align-items: center; gap: 14px; }
+.brand-lockup { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand-link:hover { opacity: 0.9; }
 
 .still-point {
   width: 58px;
@@ -60,19 +64,20 @@ button, input { font: inherit; }
   box-shadow: 0 0 0 8px rgba(216, 173, 79, 0.13);
 }
 
-h1, h2, p { margin: 0; }
+h1, h2, h3, p { margin: 0; }
 
 .hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -0.05em; }
 .hero p { color: var(--muted); margin-top: 2px; }
 
 .practice-layout {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 260px minmax(0, 1fr) 260px;
   gap: 22px;
   margin-top: 24px;
+  align-items: start;
 }
 
-.path-panel, .practice-card {
+.path-panel, .resources-panel, .practice-card, .info-card {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 30px;
@@ -80,8 +85,14 @@ h1, h2, p { margin: 0; }
   backdrop-filter: blur(10px);
 }
 
-.path-panel { padding: 22px; align-self: start; position: sticky; top: 18px; }
-.path-panel h2 { font-size: 1.05rem; margin-bottom: 14px; }
+.path-panel, .resources-panel {
+  padding: 22px;
+  align-self: start;
+  position: sticky;
+  top: 18px;
+}
+
+.path-panel h2, .resources-panel h2 { font-size: 1.05rem; margin-bottom: 14px; }
 .stage-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
 .stage-list li {
   display: flex;
@@ -91,10 +102,34 @@ h1, h2, p { margin: 0; }
   border-radius: 18px;
   color: var(--muted);
   border: 1px solid transparent;
+  cursor: pointer;
 }
 .stage-list li.current { color: var(--ink); background: rgba(92,183,174,0.15); border-color: var(--line); font-weight: 700; }
 .stage-list li.done { color: var(--teal-dark); }
 .stage-dot { width: 10px; height: 10px; border-radius: 99px; background: currentColor; opacity: 0.55; flex: 0 0 auto; }
+
+.resources-panel { text-align: left; }
+.resource-links { display: grid; gap: 10px; }
+.resource-links a {
+  display: block;
+  text-decoration: none;
+  color: var(--teal-dark);
+  background: rgba(255,255,255,0.58);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 11px 12px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+.resource-links a:hover { background: rgba(92,183,174,0.15); }
+.creator-note {
+  margin-top: 15px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
 
 .practice-card { padding: clamp(18px, 4vw, 38px); text-align: center; }
 .sage-frame {
@@ -133,7 +168,7 @@ h1, h2, p { margin: 0; }
 .progress-track span { display: block; height: 100%; width: 0%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: inherit; transition: width 280ms linear; }
 
 .controls { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-button {
+button, .ghost-link {
   border: 1px solid rgba(35,122,117,0.22);
   background: rgba(255,255,255,0.68);
   color: var(--ink);
@@ -142,6 +177,10 @@ button {
   cursor: pointer;
   min-width: 112px;
   box-shadow: 0 8px 20px rgba(23,52,58,0.08);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 button:active { transform: translateY(1px); }
 button.primary { background: var(--teal-dark); color: white; border-color: var(--teal-dark); }
@@ -150,31 +189,47 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .audio-panel {
   margin: 22px auto 0;
-  max-width: 620px;
+  max-width: 660px;
   text-align: left;
   border-top: 1px solid var(--line);
-  padding-top: 14px;
+  padding-top: 16px;
 }
-.audio-panel summary { cursor: pointer; font-weight: 800; color: var(--teal-dark); }
+.audio-panel h3 { font-size: 1.02rem; color: var(--teal-dark); margin-bottom: 12px; }
+.mode-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.mode-button { width: 100%; min-width: 0; padding: 11px 12px; border-radius: 18px; }
+.mode-button.active { background: var(--teal-dark); color: white; border-color: var(--teal-dark); }
 .slider-row { display: grid; grid-template-columns: 80px 1fr; align-items: center; gap: 12px; margin-top: 14px; }
-.check-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; color: var(--muted); }
 .hint { margin-top: 12px; color: var(--muted); font-size: 0.92rem; line-height: 1.45; }
 code { background: rgba(92,183,174,0.14); padding: 2px 5px; border-radius: 6px; }
+
+.info-card { margin-top: 28px; padding: clamp(22px, 5vw, 42px); }
+.info-card h2 { margin-top: 8px; font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: -0.05em; }
+.info-card section { margin-top: 26px; }
+.info-card h3 { color: var(--teal-dark); margin-bottom: 8px; }
+.info-card p { color: var(--muted); line-height: 1.65; font-size: 1.05rem; }
 
 footer { margin-top: 20px; color: var(--muted); font-size: 0.9rem; }
 .version { font-weight: 800; color: var(--teal-dark); }
 
-@media (max-width: 850px) {
+@media (max-width: 1120px) {
+  .practice-layout { grid-template-columns: 230px minmax(0, 1fr) 230px; gap: 16px; }
+  .path-panel, .resources-panel { padding: 18px; }
+}
+
+@media (max-width: 940px) {
   .hero, footer { align-items: flex-start; flex-direction: column; }
   .practice-layout { grid-template-columns: 1fr; }
-  .path-panel { position: static; }
+  .path-panel, .resources-panel { position: static; }
+  .path-panel { order: 1; }
+  .practice-card { order: 2; }
+  .resources-panel { order: 3; }
   .stage-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 560px) {
   .app-shell { width: min(100% - 18px, 1180px); }
-  .practice-card, .path-panel { border-radius: 22px; }
-  .stage-list { grid-template-columns: 1fr; }
-  button { width: 100%; }
+  .practice-card, .path-panel, .resources-panel, .info-card { border-radius: 22px; }
+  .stage-list, .mode-grid { grid-template-columns: 1fr; }
+  button, .ghost-link { width: 100%; }
   .controls { gap: 9px; }
 }

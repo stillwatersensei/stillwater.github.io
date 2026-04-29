@@ -5,106 +5,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stillwater Sensei | Chair Tai Chi + Qigong</title>
   <meta name="description" content="Stillwater Sensei is a peaceful browser-based chair Tai Chi and Qigong guided practice led by Sage, a calm panda guide." />
-  <link rel="stylesheet" href="style.css?v=17" />
+  <link rel="stylesheet" href="style.css?v=18" />
 </head>
 <body>
   <div class="app-shell">
-    <header class="hero compact-hero">
-      <a class="brand-lockup brand-link" href="index.html?v=17" aria-label="Stillwater opening screen">
-        <div class="still-point" aria-hidden="true"><span></span></div>
+    <header class="topbar">
+      <a class="brand-lockup" href="index.html?v=18" aria-label="Stillwater opening screen">
+        <img src="assets/sage/idle.png?v=18" alt="" class="brand-panda" />
         <div>
           <h1>Stillwater</h1>
           <p>Find your center</p>
         </div>
       </a>
-      <button id="soundToggle" class="ghost-button" type="button" aria-pressed="true">Voice + Music</button>
+      <div class="top-controls">
+        <button id="backButton" type="button">← Back</button>
+        <button id="startPauseButton" class="primary" type="button">Begin</button>
+        <button id="nextButton" type="button">Forward →</button>
+      </div>
     </header>
 
-    <main class="practice-layout three-column">
+    <main class="practice-layout">
       <aside class="path-panel" aria-label="Stillwater Path progress">
         <h2>Stillwater Path</h2>
         <ol id="stageList" class="stage-list"></ol>
+        <div class="left-card">Move with intention.<br />Breathe with awareness.<br />Be still. Be here.</div>
+        <p class="creator-note">Created by David Fliesen in 2026</p>
       </aside>
 
       <section class="practice-card" aria-live="polite">
-        <div class="sage-frame breathing-ripple">
-          <img id="sageImage" src="assets/sage/idle.png?v=17" alt="Sage the Stillwater Sensei seated calmly" />
+        <div class="stage-header">
+          <div>
+            <p id="stageEyebrow" class="eyebrow">Welcome</p>
+            <h2 id="stageTitle">Stillwater Sensei</h2>
+          </div>
+          <div id="timerText" class="timer-text">Ready</div>
         </div>
 
-        <div class="stage-copy">
-          <p id="stageEyebrow" class="eyebrow">Welcome</p>
-          <h2 id="stageTitle">Stillwater Sensei</h2>
-          <p id="stageDescription">A gentle seated practice for breath, flow, and calm focus.</p>
+        <div class="sage-scene">
+          <div class="water-ring ring-a"></div>
+          <div class="water-ring ring-b"></div>
+          <img id="sageImage" src="assets/sage/sprites/idle/frame-01.png?v=18" alt="Sage the Stillwater Sensei demonstrating the current seated movement" />
         </div>
 
-        <div class="timer-wrap" aria-label="Stage timer">
-          <div class="timer-ring">
-            <span id="timerText">Ready</span>
-          </div>
-          <div class="progress-track" aria-hidden="true"><span id="progressFill"></span></div>
-        </div>
-
-        <div class="controls">
-          <button id="backButton" type="button">Back</button>
-          <button id="startPauseButton" class="primary" type="button">Begin</button>
-          <button id="nextButton" type="button">Forward</button>
-        </div>
-
-        <details id="audioDetails" class="audio-panel" aria-label="Sound and voice controls">
-          <summary>
-            <span>Sound & Voice Settings</span>
-            <span id="audioSummary">Voice + Music</span>
-          </summary>
-
-          <div class="mode-grid" role="group" aria-label="Audio mode">
-            <button id="modeBoth" class="mode-button" type="button" data-mode="both">Play Voice + Music</button>
-            <button id="modeVoice" class="mode-button" type="button" data-mode="voice">Voice Only</button>
-            <button id="modeMusic" class="mode-button" type="button" data-mode="music">Music Only</button>
-            <button id="modeSilence" class="mode-button" type="button" data-mode="silence">Silence</button>
-          </div>
-
-          <div class="slider-row full-row">
-            <label for="voiceSelect">Browser Voice</label>
-            <select id="voiceSelect"></select>
-          </div>
-          <div class="slider-row">
-            <label for="voiceRate">Voice Speed</label>
-            <input id="voiceRate" type="range" min="0.5" max="1.3" step="0.01" value="0.72" />
-          </div>
-          <div class="slider-row">
-            <label for="voicePitch">Voice Pitch</label>
-            <input id="voicePitch" type="range" min="0.5" max="1.5" step="0.01" value="1.08" />
-          </div>
-          <div class="slider-row">
-            <label for="voiceVolume">Voice</label>
-            <input id="voiceVolume" type="range" min="0" max="1" step="0.01" value="0.70" />
-          </div>
-          <div class="slider-row">
-            <label for="musicVolume">Music</label>
-            <input id="musicVolume" type="range" min="0" max="1" step="0.01" value="0.20" />
-          </div>
-          <p id="voiceStatus" class="hint">Voice uses local MP3 files when present and falls back to your selected built-in browser voice when files are missing.</p>
-        </details>
+        <p id="stageDescription" class="stage-description">A gentle seated practice for breath, flow, and calm focus.</p>
+        <div class="speaking-pill" id="speakingPill">Sage is ready</div>
+        <div class="progress-track" aria-hidden="true"><span id="progressFill"></span></div>
       </section>
 
       <aside class="resources-panel" aria-label="Stillwater resources">
         <h2>Resources</h2>
         <nav class="resource-links" aria-label="Helpful Tai Chi and Qigong links">
-          <a href="https://www.qigonginstitute.org/directory" target="_blank" rel="noopener noreferrer">Find a local Tai Chi / Qigong instructor</a>
-          <a href="https://www.va.gov/WHOLEHEALTH/cih/Tai_Chi_and_Qigong.asp" target="_blank" rel="noopener noreferrer">Learn about VA Tai Chi for Vets</a>
-          <a href="history.html?v=17">History of Tai Chi and Qigong</a>
-          <a href="https://davidfliesen.github.io/" target="_blank" rel="noopener noreferrer">About the developer</a>
+          <a href="https://www.qigonginstitute.org/directory" target="_blank" rel="noopener noreferrer"><span>⌖</span><b>Find a local Tai Chi / Qigong instructor</b><em>qigonginstitute.org/directory</em></a>
+          <a href="https://www.va.gov/WHOLEHEALTH/cih/Tai_Chi_and_Qigong.asp" target="_blank" rel="noopener noreferrer"><span>VA</span><b>Learn about VA Tai Chi for Vets</b><em>va.gov/WHOLEHEALTH</em></a>
+          <a href="history.html?v=18"><span>☯</span><b>History of Tai Chi and Qigong</b><em>Quick overview</em></a>
+          <a href="https://davidfliesen.github.io/" target="_blank" rel="noopener noreferrer"><span>◎</span><b>About the developer</b><em>davidfliesen.github.io</em></a>
         </nav>
-        <p class="creator-note">Created by David Fliesen in 2026</p>
       </aside>
     </main>
 
+    <details id="audioDetails" class="audio-panel" aria-label="Sound and voice controls">
+      <summary>
+        <span>Sound & Voice Settings</span>
+        <span id="audioSummary">Voice + Music</span>
+      </summary>
+      <div class="mode-grid" role="group" aria-label="Audio mode">
+        <button class="mode-button" type="button" data-mode="both">Play Voice + Music</button>
+        <button class="mode-button" type="button" data-mode="voice">Voice Only</button>
+        <button class="mode-button" type="button" data-mode="music">Music Only</button>
+        <button class="mode-button" type="button" data-mode="silence">Silence</button>
+      </div>
+      <div class="settings-grid">
+        <label>Browser Voice <select id="voiceSelect"></select></label>
+        <label>Voice Speed <input id="voiceRate" type="range" min="0.5" max="1.3" step="0.01" /></label>
+        <label>Voice Pitch <input id="voicePitch" type="range" min="0.5" max="1.5" step="0.01" /></label>
+        <label>Voice <input id="voiceVolume" type="range" min="0" max="1" step="0.01" /></label>
+        <label>Music <input id="musicVolume" type="range" min="0" max="1" step="0.01" /></label>
+      </div>
+      <p id="voiceStatus" class="hint">Voice and music are on by default. Some browsers may require one tap before sound can start.</p>
+    </details>
+
     <footer>
       <p>No ads. No accounts. No pressure. Just stillness within movement.</p>
-      <p class="version">Stillwater v17</p>
+      <p class="version">Stillwater v18</p>
     </footer>
   </div>
-
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
 </body>
 </html>

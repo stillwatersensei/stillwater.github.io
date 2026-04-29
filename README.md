@@ -1,82 +1,48 @@
-# Stillwater Sensei v17
+# Stillwater Sensei v18
 
-Open-source, browser-based Chair Tai Chi + Qigong guided practice led by Sage the Stillwater Sensei, a calm 2D panda guide.
+Complete drop-in GitHub Pages bundle.
 
-## What changed in v17
+## What changed in v18
 
-- Added Sage sprite animation scaffold for every practice stage.
-- Sprite animation now starts when the stage voice starts.
-- Music continues steadily in the background and does not reset when changing sections.
-- When a music track ends, the playlist advances to the next local MP3.
-- Voice can use local MP3 files first, then falls back to the selected browser voice.
-- If sprite frames are missing, the app safely falls back to the existing still Sage PNG pose.
-- Cache-busting bumped to `v=17`.
+- No bottom sprite strip.
+- The large Sage panda is animated from sprite frames.
+- Idle sprite frames are included at `assets/sage/sprites/idle/frame-01.png` through `frame-12.png`.
+- Voice triggers the large Sage animation.
+- Music continues steadily and advances to the next song when a track ends.
+- Sound defaults match the requested screenshot as closely as practical:
+  - Voice + Music
+  - Google UK English Male when available
+  - Voice Speed 0.84
+  - Voice Pitch 0.86
+  - Voice Volume 0.78
+  - Music Volume 0.21
+- Settings are remembered in localStorage.
+- Main page attempts to start voice and music automatically. Some browsers, especially iPad Safari, may still require a tap because of autoplay restrictions.
+- Right resources panel uses a colored background to balance the left path panel.
 
-## Drop-in files
+## Local audio files
 
-Upload everything in this bundle to the root of the GitHub Pages repo:
+Place music files here:
 
-```text
-index.html
-style.css
-app.js
-history.html
-voicetest.html
-README.md
-assets/
-```
+- `assets/audio/breath.mp3`
+- `assets/audio/flow.mp3`
+- `assets/audio/stillness.mp3`
+- `assets/audio/closing.mp3`
 
-## Music files
+Place Sage voice files here:
 
-Place local music MP3 files here:
+- `assets/voice/01-awakening-breath.mp3`
+- `assets/voice/02-lift-flow.mp3`
+- `assets/voice/03-flowing-arms.mp3`
+- `assets/voice/04-gather-qi.mp3`
+- `assets/voice/05-stillness.mp3`
+- `assets/voice/06-closing.mp3`
+- `assets/voice/07-final-bow.mp3`
 
-```text
-assets/audio/breath.mp3
-assets/audio/flow.mp3
-assets/audio/stillness.mp3
-assets/audio/closing.mp3
-```
+If local voice MP3 files are missing, the app falls back to browser speech synthesis.
 
-## Sage voice files
+## Sprite animation approach
 
-Place optional local Sage voice MP3 files here:
+The app currently uses individual PNG frames instead of a visible sprite sheet because that is simplest and most reliable for GitHub Pages and iPad Safari.
 
-```text
-assets/voice/01-awakening-breath.mp3
-assets/voice/02-lift-flow.mp3
-assets/voice/03-flowing-arms.mp3
-assets/voice/04-gather-qi.mp3
-assets/voice/05-stillness.mp3
-assets/voice/06-closing.mp3
-assets/voice/07-final-bow.mp3
-```
-
-## Sage sprite folders
-
-Place transparent PNG sprite frames here:
-
-```text
-assets/sage/sprites/awakening-breath/frame-01.png
-assets/sage/sprites/awakening-breath/frame-02.png
-assets/sage/sprites/lift-flow/frame-01.png
-assets/sage/sprites/lift-flow/frame-02.png
-assets/sage/sprites/flowing-arms/frame-01.png
-assets/sage/sprites/gather-qi/frame-01.png
-assets/sage/sprites/stillness/frame-01.png
-assets/sage/sprites/closing/frame-01.png
-assets/sage/sprites/final-bow/frame-01.png
-```
-
-Recommended frame counts in the current app:
-
-```text
-Awakening Breath: 8 frames
-Lift & Flow: 8 frames
-Flowing Arms: 8 frames
-Gather Qi: 8 frames
-Stillness: 6 frames
-Closing: 8 frames
-Final Bow: 6 frames
-```
-
-Use exact names like `frame-01.png`, `frame-02.png`, etc.
+The current movement stages all use the included idle breathing frames until custom movement frame sets are created.

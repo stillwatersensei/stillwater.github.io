@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stillwater v19</title>
-  <link rel="stylesheet" href="style.css?v=19" />
+  <title>Stillwater v20</title>
+  <link rel="stylesheet" href="style.css?v=20" />
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <a class="brand" href="index.html?v=19" aria-label="Return to opening screen">
+      <a class="brand" href="index.html?v=20" aria-label="Return to opening screen">
         <img src="assets/sage/logo-sage.png" alt="Sage logo" class="brand-avatar" />
         <span><strong>Stillwater</strong><em>Find your center</em></span>
       </a>
@@ -23,7 +23,19 @@
     <main id="opening" class="opening">
       <section class="hero-card">
         <div class="sage-stage opening-sage">
-          <img id="idleSprite" src="assets/sage/idle-frames/frame-01.png?v=19" alt="Sage seated calmly and breathing" class="sage-img" />
+          <video
+            id="openingIdleVideo"
+            class="sage-img opening-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            preload="auto"
+            aria-label="Sage seated calmly and breathing"
+          >
+            <source src="assets/video/Panda_Idle.mp4?v=20" type="video/mp4" />
+          </video>
           <div class="water-ripples"><span></span><span></span><span></span></div>
         </div>
         <h1>Chair Tai Chi + Qigong</h1>
@@ -35,7 +47,12 @@
     </main>
 
     <main id="practice" class="practice hidden">
-      <aside class="side left-panel">
+      <div id="mobilePanelScrim" class="mobile-panel-scrim hidden" aria-hidden="true"></div>
+      <button id="leftDrawerBtn" class="mobile-edge-tab left-tab" type="button" aria-controls="leftPanel" aria-expanded="false">Path</button>
+      <button id="settingsDrawerBtn" class="mobile-edge-tab bottom-tab" type="button" aria-controls="settings" aria-expanded="false">Sound</button>
+      <button id="rightDrawerBtn" class="mobile-edge-tab right-tab" type="button" aria-controls="resourcesPanel" aria-expanded="false">Resources</button>
+      <aside id="leftPanel" class="side left-panel mobile-drawer-left">
+        <button class="mobile-drawer-close" data-close-panel type="button" aria-label="Close path panel">×</button>
         <h2>Stillwater Path</h2>
         <ol id="stageList"></ol>
         <div class="mantra">Move with intention.<br>Breathe with awareness.<br>Be still. Be here.</div>
@@ -48,7 +65,7 @@
           <strong id="timer">1:00</strong>
         </div>
         <div class="sage-stage main-sage-stage">
-          <img id="sageImg" src="assets/sage/idle.png?v=19" alt="Sage demonstrating the current seated movement" class="sage-img" />
+          <img id="sageImg" src="assets/sage/idle.png?v=20" alt="Sage demonstrating the current seated movement" class="sage-img" />
           <div class="water-ripples"><span></span><span></span><span></span></div>
         </div>
         <p id="instruction" class="instruction"></p>
@@ -56,11 +73,12 @@
         <div class="progress"><span id="progressBar"></span></div>
       </section>
 
-      <aside class="side resources">
+      <aside id="resourcesPanel" class="side resources mobile-drawer-right">
+        <button class="mobile-drawer-close" data-close-panel type="button" aria-label="Close resources panel">×</button>
         <h2>Resources</h2>
         <a href="https://www.qigonginstitute.org/directory" target="_blank" rel="noopener"><b>Find a local Tai Chi / Qigong instructor</b><span>qigonginstitute.org/directory</span></a>
         <a href="https://www.va.gov/WHOLEHEALTH/cih/Tai_Chi_and_Qigong.asp" target="_blank" rel="noopener"><b>Learn about VA Tai Chi for Vets</b><span>va.gov/WHOLEHEALTH</span></a>
-        <a href="history.html?v=19"><b>History of Tai Chi and Qigong</b><span>Quick overview</span></a>
+        <a href="history.html?v=20"><b>History of Tai Chi and Qigong</b><span>Quick overview</span></a>
         <a href="https://davidfliesen.github.io/" target="_blank" rel="noopener"><b>About the developer</b><span>davidfliesen.github.io</span></a>
       </aside>
     </main>
@@ -87,6 +105,6 @@
       </div>
     </section>
   </div>
-  <script src="app.js?v=19"></script>
+  <script src="app.js?v=20"></script>
 </body>
 </html>

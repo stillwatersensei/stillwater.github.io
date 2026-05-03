@@ -1,4 +1,4 @@
-const VERSION='19';
+const VERSION='20';
 
 const stages=[
   {title:'Awakening Breath',time:60,img:'assets/sage/idle.png',voice:'Let the breath rise and fall. Sit tall with both feet grounded. Inhale gently as the hands float up. Exhale as they settle back down.'},
@@ -24,7 +24,7 @@ let idleTimer=null;
 let idleFrame=1;
 let practiceStarted=false;
 
-const musicFiles=['assets/audio/breath.mp3','assets/audio/flow.mp3','assets/audio/stillness.mp3','assets/audio/closing.mp3'];
+const musicFiles=['assets/music/breath.mp3','assets/music/flow.mp3','assets/music/stillness.mp3','assets/music/closing.mp3'];
 const musicAudio=new Audio();
 musicAudio.loop=false;
 musicAudio.addEventListener('ended',()=>{musicIndex=(musicIndex+1)%musicFiles.length; playMusic();});
@@ -34,18 +34,16 @@ const $=id=>document.getElementById(id);
 function saveSettings(){localStorage.setItem('stillwaterSettings',JSON.stringify(state));}
 
 function startIdleSprite(){
-  stopIdleSprite();
-  const img=$('idleSprite');
-  if(!img)return;
-  idleTimer=setInterval(()=>{
-    idleFrame++;
-    if(idleFrame>12)idleFrame=1;
-    img.src=`assets/sage/idle-frames/frame-${String(idleFrame).padStart(2,'0')}.png?v=${VERSION}`;
-  },170);
+  const video=$('openingIdleVideo');
+  if(!video)return;
+  video.currentTime=0;
+  video.play().catch(()=>{});
 }
 
 function stopIdleSprite(){
-  if(idleTimer){clearInterval(idleTimer);idleTimer=null;}
+  const video=$('openingIdleVideo');
+  if(!video)return;
+  video.pause();
 }
 
 function fillStages(){
@@ -121,6 +119,7 @@ function stopAllSound(){
 }
 
 function showHome(soundOff=false){
+  closeMobilePanels();
   practiceStarted=false;
   paused=true;
   clearInterval(tick);
@@ -138,6 +137,7 @@ function showHome(soundOff=false){
 }
 
 function startPractice(){
+  closeMobilePanels();
   stopIdleSprite();
   $('opening').classList.add('hidden');
   $('practice').classList.remove('hidden');
@@ -195,8 +195,11 @@ $('settingsToggle').onclick=()=>{
   $('settingsIcon').textContent=$('settings').classList.contains('collapsed')?'+':'−';
 };
 $('settingsOpenBtn').onclick=()=>{
-  $('settings').classList.remove('collapsed');
-  $('settingsIcon').textContent='−';
+  if(window.innerWidth<=1120)openMobilePanel('settings');
+  else{
+    $('settings').classList.remove('collapsed');
+    $('settingsIcon').textContent='−';
+  }
 };
 document.querySelectorAll('.modes button').forEach(b=>b.onclick=()=>{
   state.mode=b.dataset.mode;
@@ -213,6 +216,43 @@ document.querySelectorAll('.modes button').forEach(b=>b.onclick=()=>{
   applySettings();
 });
 $('voiceSelect').onchange=e=>{state.voiceName=e.target.value;saveSettings();};
+
+function closeMobilePanels(){
+  document.body.classList.remove('mobile-left-open','mobile-right-open','mobile-settings-open');
+  const scrim=$('mobilePanelScrim');
+  if(scrim)scrim.classList.add('hidden');
+  ['leftDrawerBtn','rightDrawerBtn','settingsDrawerBtn'].forEach(id=>{
+    const btn=$(id);
+    if(btn)btn.setAttribute('aria-expanded','false');
+  });
+}
+
+function openMobilePanel(panel){
+  closeMobilePanels();
+  if(panel==='left'){
+    document.body.classList.add('mobile-left-open');
+    $('leftDrawerBtn')?.setAttribute('aria-expanded','true');
+  }
+  if(panel==='right'){
+    document.body.classList.add('mobile-right-open');
+    $('rightDrawerBtn')?.setAttribute('aria-expanded','true');
+  }
+  if(panel==='settings'){
+    document.body.classList.add('mobile-settings-open');
+    $('settings')?.classList.remove('collapsed');
+    $('settingsIcon').textContent='−';
+    $('settingsDrawerBtn')?.setAttribute('aria-expanded','true');
+  }
+  $('mobilePanelScrim')?.classList.remove('hidden');
+}
+
+$('leftDrawerBtn')?.addEventListener('click',()=>openMobilePanel('left'));
+$('rightDrawerBtn')?.addEventListener('click',()=>openMobilePanel('right'));
+$('settingsDrawerBtn')?.addEventListener('click',()=>openMobilePanel('settings'));
+$('mobilePanelScrim')?.addEventListener('click',closeMobilePanels);
+document.querySelectorAll('[data-close-panel]').forEach(btn=>btn.addEventListener('click',closeMobilePanels));
+window.addEventListener('keydown',event=>{if(event.key==='Escape')closeMobilePanels();});
+window.addEventListener('resize',()=>{if(window.innerWidth>1120)closeMobilePanels();});
 
 fillStages();
 loadVoices();

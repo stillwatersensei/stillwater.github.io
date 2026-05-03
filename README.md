@@ -1,10 +1,10 @@
-# Stillwater v19
+# Stillwater v20
 
 Full drop-in GitHub Pages bundle.
 
 ## Main update
 
-v19 restores the opening/home screen and makes the home Sage use a real image-sequence sprite animation:
+v20 restores the opening/home screen and makes the home Sage use a real image-sequence sprite animation:
 
 `assets/sage/idle-frames/frame-01.png` through `frame-12.png`
 
@@ -18,16 +18,16 @@ The app swaps those frame images with JavaScript. This is different from the old
 - Music advances to the next local MP3 when a track ends.
 - After Final Bow completes, music stops, sound mode is set to Silence, and the app returns home.
 - Sound settings are remembered with localStorage.
-- CSS/JS cache busting is set to v=19.
+- CSS/JS cache busting is set to v=20.
 
 ## Audio files expected
 
 Place local music MP3 files here:
 
-- assets/audio/breath.mp3
-- assets/audio/flow.mp3
-- assets/audio/stillness.mp3
-- assets/audio/closing.mp3
+- assets/music/breath.mp3
+- assets/music/flow.mp3
+- assets/music/stillness.mp3
+- assets/music/closing.mp3
 
 Optional future Sage voice files can go here:
 

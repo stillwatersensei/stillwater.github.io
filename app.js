@@ -1,33 +1,78 @@
-const VERSION='20';
+const VERSION='21';
 
 const stages=[
-  {title:'Awakening Breath',time:60,img:'assets/sage/idle.png',voice:'Let the breath rise and fall. Sit tall with both feet grounded. Inhale gently as the hands float up. Exhale as they settle back down.'},
-  {title:'Lift & Flow',time:60,img:'assets/sage/idle.png',voice:'Lift slowly through the center. Let the arms float as if supported by warm water. Release without forcing.'},
-  {title:'Flowing Arms',time:60,img:'assets/sage/idle.png',voice:'Let the arms drift from side to side. Keep the shoulders soft and the breath easy.'},
-  {title:'Gather Qi',time:60,img:'assets/sage/idle.png',voice:'Gather calm energy toward the heart. Let the hands return to center with quiet attention.'},
-  {title:'Stillness',time:60,img:'assets/sage/idle.png',voice:'Rest in stillness. Notice the breath. Let the body settle.'},
-  {title:'Closing',time:60,img:'assets/sage/idle.png',voice:'Let the hands lower gently. Carry this calm into the rest of your day.'},
-  {title:'Final Bow',time:35,img:'assets/sage/idle.png',voice:'Bow gently to the practice, to your body, and to the stillness within.'}
+  {
+    title:'Awakening Breath',
+    time:60,
+    img:'assets/sage/idle.png',
+    instruction:'Let the breath rise and fall. Sit tall with both feet grounded. Inhale gently as the hands float up. Exhale as they settle back down.',
+    clip:'assets/sage/audio-clips/Stillwater-001-Awakening-Breath.mp3'
+  },
+  {
+    title:'Lift & Flow',
+    time:60,
+    img:'assets/sage/idle.png',
+    instruction:'Lift slowly through the center. Let the arms float as if supported by warm water. Release without forcing.',
+    clip:'assets/sage/audio-clips/Stillwater-002-Lift-and-Flow.mp3'
+  },
+  {
+    title:'Flowing Arms',
+    time:60,
+    img:'assets/sage/idle.png',
+    instruction:'Let the arms drift from side to side. Keep the shoulders soft and the breath easy.',
+    clip:'assets/sage/audio-clips/Stillwater-003-Flowing-Arms.mp3'
+  },
+  {
+    title:'Gather Qi',
+    time:60,
+    img:'assets/sage/idle.png',
+    instruction:'Gather calm energy toward the heart. Let the hands return to center with quiet attention.',
+    clip:'assets/sage/audio-clips/Stillwater-004-Gathering-Qi.mp3'
+  },
+  {
+    title:'Stillness',
+    time:60,
+    img:'assets/sage/idle.png',
+    instruction:'Rest in stillness. Notice the breath. Let the body settle.',
+    clip:'assets/sage/audio-clips/Stillwater-005-Stillness.mp3'
+  },
+  {
+    title:'Closing',
+    time:60,
+    img:'assets/sage/idle.png',
+    instruction:'Let the hands lower gently. Carry this calm into the rest of your day.',
+    clip:'assets/sage/audio-clips/Stillwater-006-Closing.mp3'
+  },
+  {
+    title:'Final Bow',
+    time:35,
+    img:'assets/sage/idle.png',
+    instruction:'Bow gently to the practice, to your body, and to the stillness within.',
+    clip:'assets/sage/audio-clips/Stillwater-007-Final-Bow.mp3'
+  }
 ];
 
-const defaults={mode:'voiceMusic',voiceName:'Google UK English Male',speed:.95,pitch:.85,voiceVol:.78,musicVol:.22};
+const defaults={mode:'voiceMusic',voiceVol:.78,musicVol:.22};
 let state=JSON.parse(localStorage.getItem('stillwaterSettings')||'null')||defaults;
 state={...defaults,...state};
+
+delete state.voiceName;
+delete state.speed;
+delete state.pitch;
 
 let stageIndex=0;
 let remaining=stages[0].time;
 let paused=true;
 let tick=null;
-let voices=[];
 let musicIndex=0;
-let idleTimer=null;
-let idleFrame=1;
 let practiceStarted=false;
 
 const musicFiles=['assets/music/breath.mp3','assets/music/flow.mp3','assets/music/stillness.mp3','assets/music/closing.mp3'];
 const musicAudio=new Audio();
+const voiceAudio=new Audio();
 musicAudio.loop=false;
-musicAudio.addEventListener('ended',()=>{musicIndex=(musicIndex+1)%musicFiles.length; playMusic();});
+voiceAudio.preload='auto';
+musicAudio.addEventListener('ended',()=>{musicIndex=(musicIndex+1)%musicFiles.length;playMusic();});
 
 const $=id=>document.getElementById(id);
 
@@ -51,36 +96,27 @@ function fillStages(){
   document.querySelectorAll('#stageList li').forEach(li=>li.onclick=()=>goToStage(+li.dataset.i,true));
 }
 
-function loadVoices(){
-  voices=speechSynthesis.getVoices();
-  const sel=$('voiceSelect');
-  sel.innerHTML='';
-  voices.forEach(v=>{
-    const option=document.createElement('option');
-    option.value=v.name;
-    option.textContent=`${v.name} (${v.lang})`;
-    sel.appendChild(option);
-  });
-  const preferred=voices.find(v=>v.name===state.voiceName)||voices.find(v=>v.name.includes('Google UK English Male'))||voices.find(v=>v.lang==='en-GB')||voices[0];
-  if(preferred){sel.value=preferred.name;state.voiceName=preferred.name;saveSettings();}
-}
-
-speechSynthesis.onvoiceschanged=loadVoices;
-
 function applySettings(){
-  ['speed','pitch','voiceVol','musicVol'].forEach(id=>$(id).value=state[id]);
+  ['voiceVol','musicVol'].forEach(id=>{
+    const control=$(id);
+    if(control)control.value=state[id];
+  });
   document.querySelectorAll('.modes button').forEach(b=>b.classList.toggle('active',b.dataset.mode===state.mode));
   $('modeLabel').textContent={voiceMusic:'Voice + Music',voiceOnly:'Voice Only',musicOnly:'Music Only',silence:'Silence'}[state.mode];
   musicAudio.volume=state.musicVol;
+  voiceAudio.volume=state.voiceVol;
+
   if(state.mode==='voiceOnly'||state.mode==='silence')musicAudio.pause();
   else if(!paused&&practiceStarted)playMusic();
+
+  if(state.mode==='musicOnly'||state.mode==='silence')voiceAudio.pause();
 }
 
 function render(){
   const stage=stages[stageIndex];
   $('stageNum').textContent=`STAGE ${stageIndex+1}`;
   $('stageTitle').textContent=stage.title;
-  $('instruction').textContent=stage.voice;
+  $('instruction').textContent=stage.instruction;
   $('timer').textContent=formatTime(remaining);
   $('progressBar').style.width=`${100*(1-remaining/stage.time)}%`;
   document.querySelectorAll('#stageList li').forEach((li,n)=>li.classList.toggle('active',n===stageIndex));
@@ -93,16 +129,16 @@ function formatTime(totalSeconds){
   return `${Math.floor(totalSeconds/60)}:${String(totalSeconds%60).padStart(2,'0')}`;
 }
 
-function speakCurrentStage(){
-  speechSynthesis.cancel();
+function playVoiceClip(restart=true){
   if(state.mode==='musicOnly'||state.mode==='silence')return;
-  const utterance=new SpeechSynthesisUtterance(stages[stageIndex].voice);
-  const selected=voices.find(v=>v.name===$('voiceSelect').value)||voices.find(v=>v.name===state.voiceName)||voices[0];
-  if(selected)utterance.voice=selected;
-  utterance.rate=+state.speed;
-  utterance.pitch=+state.pitch;
-  utterance.volume=+state.voiceVol;
-  try{speechSynthesis.speak(utterance);}catch(error){}
+  const stage=stages[stageIndex];
+  if(restart||!voiceAudio.src.includes(stage.clip)){
+    voiceAudio.pause();
+    voiceAudio.src=stage.clip;
+    voiceAudio.currentTime=0;
+  }
+  voiceAudio.volume=state.voiceVol;
+  voiceAudio.play().then(()=>{$('unlockBtn').classList.add('hidden');}).catch(()=>{$('unlockBtn').classList.remove('hidden');});
 }
 
 function playMusic(){
@@ -115,7 +151,8 @@ function playMusic(){
 function stopAllSound(){
   musicAudio.pause();
   musicAudio.currentTime=0;
-  speechSynthesis.cancel();
+  voiceAudio.pause();
+  voiceAudio.currentTime=0;
 }
 
 function showHome(soundOff=false){
@@ -150,7 +187,7 @@ function startPractice(){
   render();
   if(state.mode!=='silence'){
     playMusic();
-    speakCurrentStage();
+    playVoiceClip(true);
   }
   clearInterval(tick);
   tick=setInterval(()=>{
@@ -177,16 +214,21 @@ function goToStage(index,manual){
   stageIndex=Math.max(0,Math.min(stages.length-1,index));
   remaining=stages[stageIndex].time;
   render();
-  if(!paused&&practiceStarted)speakCurrentStage();
+  if(!paused&&practiceStarted)playVoiceClip(true);
 }
 
 $('beginBtn').onclick=startPractice;
-$('unlockBtn').onclick=()=>{playMusic();speakCurrentStage();$('unlockBtn').classList.add('hidden');};
+$('unlockBtn').onclick=()=>{playMusic();playVoiceClip(false);$('unlockBtn').classList.add('hidden');};
 $('pauseBtn').onclick=()=>{
   paused=!paused;
   $('pauseBtn').textContent=paused?'Resume':'Pause';
-  if(paused){musicAudio.pause();speechSynthesis.pause();}
-  else{speechSynthesis.resume();playMusic();}
+  if(paused){
+    musicAudio.pause();
+    voiceAudio.pause();
+  }else{
+    playMusic();
+    playVoiceClip(false);
+  }
 };
 $('backBtn').onclick=()=>goToStage(stageIndex-1,true);
 $('forwardBtn').onclick=()=>goToStage(stageIndex+1,true);
@@ -201,21 +243,25 @@ $('settingsOpenBtn').onclick=()=>{
     $('settingsIcon').textContent='−';
   }
 };
+
 document.querySelectorAll('.modes button').forEach(b=>b.onclick=()=>{
   state.mode=b.dataset.mode;
   saveSettings();
   applySettings();
   if(practiceStarted&&!paused){
     if(state.mode==='silence')stopAllSound();
-    else{playMusic();speakCurrentStage();}
+    else{
+      playMusic();
+      playVoiceClip(false);
+    }
   }
 });
-['speed','pitch','voiceVol','musicVol'].forEach(id=>$(id).oninput=e=>{
+
+['voiceVol','musicVol'].forEach(id=>$(id).oninput=e=>{
   state[id]=+e.target.value;
   saveSettings();
   applySettings();
 });
-$('voiceSelect').onchange=e=>{state.voiceName=e.target.value;saveSettings();};
 
 function closeMobilePanels(){
   document.body.classList.remove('mobile-left-open','mobile-right-open','mobile-settings-open');
@@ -255,14 +301,13 @@ window.addEventListener('keydown',event=>{if(event.key==='Escape')closeMobilePan
 window.addEventListener('resize',()=>{if(window.innerWidth>1120)closeMobilePanels();});
 
 fillStages();
-loadVoices();
 applySettings();
 render();
 showHome(false);
 
-// Browser autoplay is attempted but may be blocked. The Begin button is the reliable user gesture.
 window.addEventListener('load',()=>{
   if(state.mode!=='silence'){
     musicAudio.volume=state.musicVol;
+    voiceAudio.volume=state.voiceVol;
   }
 });

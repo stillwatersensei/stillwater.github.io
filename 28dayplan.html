@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>28-Day Chair Tai Chi Workout Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,600;1,300&family=Noto+Sans:wght@300;400;600&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --stone: #4a4a5a;
+    --sage: #6b8c6b;
+    --sage-light: #c8d8c0;
+    --rice: #f5f0e8;
+    --warm-white: #faf8f3;
+    --terracotta: #b5654a;
+    --gold: #c9a84c;
+    --mist: #e8edf0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--rice);
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(107,140,107,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 20%, rgba(201,168,76,0.15) 0%, transparent 60%);
+  }
+
+  .cover-brush {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 90px;
+    color: rgba(201,168,76,0.35);
+    position: absolute;
+    top: 30px; right: 40px;
+    letter-spacing: 8px;
+    line-height: 1;
+    writing-mode: vertical-rl;
+  }
+
+  .cover-tag {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .cover h1 {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 300;
+    font-size: 52px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .cover h1 em {
+    font-style: italic;
+    color: var(--sage-light);
+  }
+
+  .cover-sub {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 48px;
+    position: relative;
+  }
+
+  .cover-intro {
+    max-width: 560px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(245,240,232,0.75);
+    position: relative;
+    margin-bottom: 48px;
+  }
+
+  .cover-weeks {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .cover-week {
+    text-align: center;
+  }
+
+  .cover-week-num {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .cover-week-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-top: 4px;
+  }
+
+  .cover-week-theme {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--sage-light);
+    margin-top: 4px;
+  }
+
+  .print-note {
+    position: absolute;
+    bottom: 24px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+  }
+
+  /* ── HOW TO USE ── */
+  .how-to {
+    background: var(--rice);
+    padding: 48px 40px;
+    border-bottom: 1px solid rgba(107,140,107,0.3);
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .how-to h2 {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 300;
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .how-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(107,140,107,0.25);
+    border-radius: 4px;
+    padding: 20px;
+  }
+
+  .how-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  .how-card h3 {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+
+  .how-card p {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  .disclaimer {
+    font-size: 11px;
+    color: var(--stone);
+    border-left: 3px solid var(--terracotta);
+    padding-left: 16px;
+    font-style: italic;
+  }
+
+  /* ── EXERCISE GLOSSARY ── */
+  .glossary {
+    padding: 48px 40px;
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--mist);
+  }
+
+  .glossary h2 {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 300;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .glossary-intro {
+    font-size: 12px;
+    color: var(--stone);
+    margin-bottom: 28px;
+    max-width: 600px;
+  }
+
+  .exercises-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .ex-card {
+    border: 1px solid var(--mist);
+    border-radius: 4px;
+    padding: 16px;
+    background: var(--rice);
+  }
+
+  .ex-card h4 {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .ex-badge {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    border: 1px solid var(--sage);
+    border-radius: 2px;
+    padding: 1px 5px;
+    margin-bottom: 8px;
+  }
+
+  .ex-card p {
+    font-size: 11px;
+    color: var(--stone);
+    line-height: 1.6;
+  }
+
+  /* ── CALENDAR ── */
+  .calendar-section {
+    padding: 48px 40px;
+    background: var(--rice);
+  }
+
+  .week-block {
+    margin-bottom: 40px;
+  }
+
+  .week-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 8px;
+  }
+
+  .week-num {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .week-theme {
+    font-family: 'Noto Serif Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--stone);
+  }
+
+  .week-focus {
+    margin-left: auto;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-weight: 600;
+  }
+
+  .days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+
+  .day-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(107,140,107,0.2);
+    border-radius: 4px;
+    padding: 12px 10px;
+    min-height: 120px;
+    position: relative;
+  }
+
+  .day-card.rest {
+    background: var(--mist);
+    border-color: transparent;
+  }
+
+  .day-num {
+    font-family: 'Noto Serif Display', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .day-name {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 8px;
+  }
+
+  .day-exercises {
+    list-style: none;
+  }
+
+  .day-exercises li {
+    font-size: 10px;
+    color: var(--ink);
+    line-height: 1.5;
+    padding-left: 8px;
+    position: relative;
+  }
+
+  .day-exercises li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--sage);
+  }
+
+  .day-exercises li span {
+    color: var(--stone);
+    font-size: 9px;
+  }
+
+  .rest-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+  }
+
+  .rest-kanji {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 28px;
+    color: rgba(107,140,107,0.4);
+    line-height: 1;
+  }
+
+  .rest-text {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 4px;
+  }
+
+  .day-check {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid rgba(107,140,107,0.4);
+    border-radius: 50%;
+  }
+
+  /* ── PROGRESS TRACKER ── */
+  .tracker {
+    padding: 48px 40px;
+    background: var(--warm-white);
+    border-top: 1px solid var(--mist);
+  }
+
+  .tracker h2 {
+    font-family: 'Noto Serif Display', serif;
+    font-weight: 300;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .tracker-intro {
+    font-size: 12px;
+    color: var(--stone);
+    margin-bottom: 28px;
+  }
+
+  .tracker-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+
+  .tracker-table th {
+    background: var(--ink);
+    color: var(--rice);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 10px;
+  }
+
+  .tracker-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--mist);
+    color: var(--stone);
+  }
+
+  .tracker-table tr:nth-child(even) td {
+    background: var(--rice);
+  }
+
+  .tracker-line {
+    border-bottom: 1px solid var(--mist);
+    min-width: 80px;
+    display: inline-block;
+  }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    body { font-size: 11px; }
+    .cover { min-height: auto; padding: 40px; page-break-after: always; }
+    .how-to { page-break-after: always; }
+    .glossary { page-break-after: always; }
+    .week-block { page-break-inside: avoid; }
+    .no-print { display: none !important; }
+    .day-card { border: 1px solid #ccc; }
+  }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--ink);
+    color: var(--rice);
+    border: none;
+    padding: 14px 28px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: background 0.2s;
+    z-index: 100;
+  }
+  .print-btn:hover { background: var(--sage); }
+</style>
+</head>
+<body>
+
+<!-- PRINT BUTTON -->
+<button class="print-btn no-print" onclick="window.print()">🖨 Print Plan</button>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover">
+  <div class="cover-brush">太極</div>
+  <div class="cover-tag">28-Day Program</div>
+  <h1><em>Chair</em> Tai Chi<br>Workout Plan</h1>
+  <p class="cover-sub">Seated Strength · Balance · Calm</p>
+  <div class="cover-divider"></div>
+  <p class="cover-intro">
+    A gentle, progressive four-week program rooted in the flowing principles of Tai Chi — adapted entirely for a chair. No equipment. No gym. No quiz. Just clear daily guidance to build strength, improve balance, and quiet the mind.
+  </p>
+  <div class="cover-weeks">
+    <div class="cover-week">
+      <div class="cover-week-num">01</div>
+      <div class="cover-week-label">Week One</div>
+      <div class="cover-week-theme">Rooting</div>
+    </div>
+    <div class="cover-week">
+      <div class="cover-week-num">02</div>
+      <div class="cover-week-label">Week Two</div>
+      <div class="cover-week-theme">Flowing</div>
+    </div>
+    <div class="cover-week">
+      <div class="cover-week-num">03</div>
+      <div class="cover-week-label">Week Three</div>
+      <div class="cover-week-theme">Expanding</div>
+    </div>
+    <div class="cover-week">
+      <div class="cover-week-num">04</div>
+      <div class="cover-week-label">Week Four</div>
+      <div class="cover-week-theme">Integrating</div>
+    </div>
+  </div>
+  <p class="print-note">Print this page · No signup required · Free forever</p>
+</div>
+
+<!-- ══════════ HOW TO USE ══════════ -->
+<div class="how-to">
+  <div class="section-label">Before You Begin</div>
+  <h2>How to Use This Plan</h2>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-icon">🪑</div>
+      <h3>Choose Your Chair</h3>
+      <p>Use a sturdy, armless chair with a firm seat. Feet should rest flat on the floor. No wheels or rocking chairs. Keep it away from walls so arms can extend fully.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🌬</div>
+      <h3>Breathe Slowly</h3>
+      <p>In Tai Chi, breath drives movement. Inhale as you open or lift; exhale as you close or lower. Never hold your breath. If you feel dizzy, pause and breathe normally.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">🐢</div>
+      <h3>Move Like Water</h3>
+      <p>All movements should be slow, continuous, and deliberate. There is no hurrying. Quality of movement matters far more than speed or repetitions.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">📅</div>
+      <h3>Rest Days Matter</h3>
+      <p>Rest days (marked 休 below) are part of the program, not gaps. Use them to notice how your body feels. Light walking is welcome; vigorous exercise is not.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">⏱</div>
+      <h3>Duration</h3>
+      <p>Week 1–2 sessions run ~15 minutes. Week 3–4 sessions run ~20–25 minutes. Start your timer only after you're seated and composed.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-icon">✅</div>
+      <h3>Track Progress</h3>
+      <p>Check the small circle on each day card after completing it. Use the progress journal at the end of this document to note how you feel each week.</p>
+    </div>
+  </div>
+  <p class="disclaimer">Consult your physician before beginning this or any new exercise program, especially if you have cardiovascular, balance, or joint conditions. Stop and rest if you feel pain, dizziness, or shortness of breath.</p>
+</div>
+
+<!-- ══════════ EXERCISE GLOSSARY ══════════ -->
+<div class="glossary">
+  <div class="section-label">Exercise Reference</div>
+  <h2>The Movements</h2>
+  <p class="glossary-intro">Each exercise below is used in the 28-day calendar. Refer back here anytime you need a description. All are performed seated unless noted.</p>
+
+  <div class="exercises-grid">
+    <div class="ex-card">
+      <div class="ex-badge">Warm-Up</div>
+      <h4>Seated March</h4>
+      <p>Lift alternating knees slowly, as if walking in place. Keep spine tall. Arms may swing gently opposite to legs. 20–30 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Warm-Up</div>
+      <h4>Neck Rolls</h4>
+      <p>Drop chin to chest, slowly roll right ear toward right shoulder, back to center, left ear toward left shoulder. Never roll fully backward. 30 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Warm-Up</div>
+      <h4>Arm Circles</h4>
+      <p>Extend arms at shoulder height, draw slow circles forward 10 times, then backward 10 times. Breathe continuously.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Warm-Up</div>
+      <h4>Ankle Rolls</h4>
+      <p>Lift one foot, rotate the ankle 5 times clockwise, 5 counter-clockwise. Repeat other side. Grounds awareness in the feet.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Core / Flow</div>
+      <h4>Cloud Hands</h4>
+      <p>With soft elbows, sweep both hands slowly from left to right as if moving clouds across the sky. Torso rotates gently. 30–40 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Core / Flow</div>
+      <h4>Ward Off (Peng)</h4>
+      <p>Hold arms in a rounded shape as if embracing a large ball. Slowly push outward with one forearm while the opposite hand curves below. 30 sec each side.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Core / Flow</div>
+      <h4>Parting the Wild Horse's Mane</h4>
+      <p>One hand rises to shoulder height (palm down), opposite hand descends to hip (palm up), as if parting a horse's mane. Alternate sides smoothly. 30 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Core / Flow</div>
+      <h4>Brush Knee</h4>
+      <p>One hand sweeps low past the opposite knee while the other hand pushes forward at chest height. Alternate sides with flowing continuity. 30 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Core / Flow</div>
+      <h4>Repulse the Monkey</h4>
+      <p>Draw one hand back to the ear while the opposite hand reaches forward, palm out, as if gently pushing away a monkey. Step back in the mind while seated. 30 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Core / Flow</div>
+      <h4>Wave Hands in Clouds</h4>
+      <p>Like Cloud Hands but with more torso rotation and a gentle figure-8 path through center. One hand always moves opposite the other. 40 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Strength</div>
+      <h4>Seated Leg Lifts</h4>
+      <p>Slowly straighten one knee until the leg is parallel to the floor, hold 3 sec, lower. Repeat other side. Strengthens quads and hip flexors. 10 reps each.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Strength</div>
+      <h4>Seated Marching (Weighted)</h4>
+      <p>Like Seated March but hold the knee at height for 2 seconds before lowering. Increases core engagement. 15–20 sec per leg.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Strength</div>
+      <h4>Shoulder Shrugs</h4>
+      <p>Inhale and draw shoulders up to ears; exhale and let them drop completely. Feel the contrast between tension and release. 10 reps.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Strength</div>
+      <h4>Seated Chest Opener</h4>
+      <p>Interlace fingers behind the head (or clasp hands behind the back), open elbows wide, inhale and lift the chest. Hold 3 sec, release. 8 reps.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Strength</div>
+      <h4>Goddess Squat (Seated)</h4>
+      <p>Sit at the edge of chair, feet wide, slowly rise to a partial stand (hover), then lower back down with control. 10–12 reps. Progress to full stand by Week 3.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Strength</div>
+      <h4>Seated Row</h4>
+      <p>Arms extended forward, draw both elbows back squeezing shoulder blades together as if rowing a boat. Hold 2 sec, return slowly. 10 reps.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Balance</div>
+      <h4>Single Leg Hold</h4>
+      <p>With hands on thighs for light support, lift one foot 2–3 inches off floor and hold still for 10 sec. Breathe. Repeat other side. Builds hip stability.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Balance</div>
+      <h4>Toe Taps</h4>
+      <p>Alternately tap each toe forward, then out to the side, then back to center. Slow and controlled. Improves ankle proprioception. 20 sec each side.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Stretch</div>
+      <h4>Forward Fold</h4>
+      <p>Seated at edge, slowly hinge at the hips and let the torso drape toward thighs (or as far as is comfortable). Breathe deeply. Hold 30–40 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Stretch</div>
+      <h4>Seated Cat-Cow</h4>
+      <p>Hands on knees. Inhale: arch the back, lift chest (cow). Exhale: round the spine, drop chin (cat). Flow between both for 30–40 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Stretch</div>
+      <h4>Eagle Arms Stretch</h4>
+      <p>Cross one arm under the other at the elbows, wrap forearms, lift elbows to shoulder height. Feel the stretch across upper back. 20 sec each side.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Stretch</div>
+      <h4>Seated Twist</h4>
+      <p>Hand on opposite knee, other hand behind you on the chair seat. Inhale to grow tall, exhale to rotate. Look over the shoulder. 20–30 sec each side.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Stretch</div>
+      <h4>Hip Opener</h4>
+      <p>Cross ankle over opposite knee (figure-4 position). Sit tall and gently lean forward from the hips until you feel a stretch in the outer hip/glute. 30–40 sec each side.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Closing</div>
+      <h4>Gathering Qi</h4>
+      <p>Arms wide at sides, slowly sweep hands inward to center at the belly (the dantian), as if gathering energy. Repeat 5–8 times. Traditional Tai Chi closing.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Closing</div>
+      <h4>Seated Savasana</h4>
+      <p>Rest both hands in lap, close eyes, breathe naturally for 1–2 minutes. Notice any stillness or warmth in the body. The most important move.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Advanced Wk3–4</div>
+      <h4>Warrior I Pose (Seated)</h4>
+      <p>Sit sideways on edge of chair, rear leg extended straight back (foot on floor), front knee at 90°. Arms sweep overhead. Hold 20–30 sec each side.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Advanced Wk3–4</div>
+      <h4>Pigeon Pose (Seated)</h4>
+      <p>Cross ankle over opposite knee. Flex the foot to protect the knee. Sit upright or gently lean forward. Far deeper hip stretch than basic hip opener. 30–40 sec.</p>
+    </div>
+    <div class="ex-card">
+      <div class="ex-badge">Advanced Wk3–4</div>
+      <h4>Hamstring Stretch (Seated)</h4>
+      <p>Extend one leg out straight, flex the foot, and gently reach toward the toes. Keep the spine long. Do not round the back. 30 sec each side.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 28-DAY CALENDAR ══════════ -->
+<div class="calendar-section">
+  <div class="section-label">Your Program</div>
+
+  <!-- ── WEEK 1 ── -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Week 1</div>
+      <div class="week-theme">Rooting — Finding Your Seat</div>
+      <div class="week-focus">~15 min/day</div>
+    </div>
+    <div class="days-grid">
+      <!-- Day 1 -->
+      <div class="day-card">
+        <div class="day-num">1</div>
+        <div class="day-name">Mon</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>20s</span></li>
+          <li>Arm Circles <span>10×</span></li>
+          <li>Ankle Rolls <span>5×ea</span></li>
+          <li>Neck Rolls <span>30s</span></li>
+          <li>Gathering Qi <span>5×</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 2 -->
+      <div class="day-card">
+        <div class="day-num">2</div>
+        <div class="day-name">Tue</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>20s</span></li>
+          <li>Shoulder Shrugs <span>10×</span></li>
+          <li>Seated Cat-Cow <span>30s</span></li>
+          <li>Cloud Hands <span>30s</span></li>
+          <li>Gathering Qi <span>5×</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 3 -->
+      <div class="day-card">
+        <div class="day-num">3</div>
+        <div class="day-name">Wed</div>
+        <ul class="day-exercises">
+          <li>Neck Rolls <span>30s</span></li>
+          <li>Arm Circles <span>10×</span></li>
+          <li>Seated Leg Lifts <span>8×ea</span></li>
+          <li>Toe Taps <span>20s</span></li>
+          <li>Forward Fold <span>30s</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 4 REST -->
+      <div class="day-card rest">
+        <div class="day-num">4</div>
+        <div class="day-name">Thu</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+      <!-- Day 5 -->
+      <div class="day-card">
+        <div class="day-num">5</div>
+        <div class="day-name">Fri</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>20s</span></li>
+          <li>Ward Off (Peng) <span>30s ea</span></li>
+          <li>Seated Chest Opener <span>8×</span></li>
+          <li>Cloud Hands <span>40s</span></li>
+          <li>Gathering Qi <span>5×</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 6 -->
+      <div class="day-card">
+        <div class="day-num">6</div>
+        <div class="day-name">Sat</div>
+        <ul class="day-exercises">
+          <li>Arm Circles <span>10×</span></li>
+          <li>Seated Twist <span>20s ea</span></li>
+          <li>Shoulder Shrugs <span>10×</span></li>
+          <li>Brush Knee <span>30s</span></li>
+          <li>Forward Fold <span>30s</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 7 REST -->
+      <div class="day-card rest">
+        <div class="day-num">7</div>
+        <div class="day-name">Sun</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WEEK 2 ── -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Week 2</div>
+      <div class="week-theme">Flowing — Linking the Movements</div>
+      <div class="week-focus">~18 min/day</div>
+    </div>
+    <div class="days-grid">
+      <!-- Day 8 -->
+      <div class="day-card">
+        <div class="day-num">8</div>
+        <div class="day-name">Mon</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>30s</span></li>
+          <li>Cloud Hands <span>40s</span></li>
+          <li>Goddess Squat <span>10×</span></li>
+          <li>Hip Opener <span>30s ea</span></li>
+          <li>Gathering Qi <span>6×</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 9 REST -->
+      <div class="day-card rest">
+        <div class="day-num">9</div>
+        <div class="day-name">Tue</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+      <!-- Day 10 -->
+      <div class="day-card">
+        <div class="day-num">10</div>
+        <div class="day-name">Wed</div>
+        <ul class="day-exercises">
+          <li>Neck Rolls <span>30s</span></li>
+          <li>Parting Wild Mane <span>30s</span></li>
+          <li>Seated Row <span>10×</span></li>
+          <li>Seated Cat-Cow <span>40s</span></li>
+          <li>Eagle Arms <span>20s ea</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 11 -->
+      <div class="day-card">
+        <div class="day-num">11</div>
+        <div class="day-name">Thu</div>
+        <ul class="day-exercises">
+          <li>Arm Circles <span>10×</span></li>
+          <li>Repulse the Monkey <span>30s</span></li>
+          <li>Seated Leg Lifts <span>10×ea</span></li>
+          <li>Single Leg Hold <span>10s ea</span></li>
+          <li>Forward Fold <span>40s</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 12 REST -->
+      <div class="day-card rest">
+        <div class="day-num">12</div>
+        <div class="day-name">Fri</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+      <!-- Day 13 -->
+      <div class="day-card">
+        <div class="day-num">13</div>
+        <div class="day-name">Sat</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>30s</span></li>
+          <li>Wave Hands Clouds <span>40s</span></li>
+          <li>Brush Knee <span>40s</span></li>
+          <li>Seated Chest Opener <span>10×</span></li>
+          <li>Seated Twist <span>25s ea</span></li>
+          <li>Gathering Qi <span>6×</span></li>
+          <li>Seated Savasana <span>1 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 14 REST -->
+      <div class="day-card rest">
+        <div class="day-num">14</div>
+        <div class="day-name">Sun</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WEEK 3 ── -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Week 3</div>
+      <div class="week-theme">Expanding — Deeper Reach</div>
+      <div class="week-focus">~22 min/day</div>
+    </div>
+    <div class="days-grid">
+      <!-- Day 15 -->
+      <div class="day-card">
+        <div class="day-num">15</div>
+        <div class="day-name">Mon</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>30s</span></li>
+          <li>Cloud Hands <span>45s</span></li>
+          <li>Ward Off (Peng) <span>40s ea</span></li>
+          <li>Goddess Squat <span>12×</span></li>
+          <li>Hip Opener <span>40s ea</span></li>
+          <li>Gathering Qi <span>8×</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 16 REST -->
+      <div class="day-card rest">
+        <div class="day-num">16</div>
+        <div class="day-name">Tue</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+      <!-- Day 17 -->
+      <div class="day-card">
+        <div class="day-num">17</div>
+        <div class="day-name">Wed</div>
+        <ul class="day-exercises">
+          <li>Neck Rolls <span>30s</span></li>
+          <li>Toe Taps <span>20s ea</span></li>
+          <li>Warrior I Pose <span>25s ea</span></li>
+          <li>Repulse the Monkey <span>45s</span></li>
+          <li>Eagle Arms <span>25s ea</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 18 -->
+      <div class="day-card">
+        <div class="day-num">18</div>
+        <div class="day-name">Thu</div>
+        <ul class="day-exercises">
+          <li>Arm Circles <span>12×</span></li>
+          <li>Wave Hands Clouds <span>45s</span></li>
+          <li>Seated Row <span>12×</span></li>
+          <li>Pigeon Pose <span>35s ea</span></li>
+          <li>Seated Cat-Cow <span>45s</span></li>
+          <li>Gathering Qi <span>8×</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 19 -->
+      <div class="day-card">
+        <div class="day-num">19</div>
+        <div class="day-name">Fri</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>35s</span></li>
+          <li>Parting Wild Mane <span>40s</span></li>
+          <li>Single Leg Hold <span>15s ea</span></li>
+          <li>Hamstring Stretch <span>30s ea</span></li>
+          <li>Brush Knee <span>45s</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 20 REST -->
+      <div class="day-card rest">
+        <div class="day-num">20</div>
+        <div class="day-name">Sat</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+      <!-- Day 21 -->
+      <div class="day-card">
+        <div class="day-num">21</div>
+        <div class="day-name">Sun</div>
+        <ul class="day-exercises">
+          <li>Neck Rolls <span>30s</span></li>
+          <li>Cloud Hands <span>50s</span></li>
+          <li>Goddess Squat <span>12×</span></li>
+          <li>Seated Chest Opener <span>10×</span></li>
+          <li>Hip Opener <span>40s ea</span></li>
+          <li>Gathering Qi <span>8×</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WEEK 4 ── -->
+  <div class="week-block">
+    <div class="week-header">
+      <div class="week-num">Week 4</div>
+      <div class="week-theme">Integrating — The Full Flow</div>
+      <div class="week-focus">~25 min/day</div>
+    </div>
+    <div class="days-grid">
+      <!-- Day 22 -->
+      <div class="day-card">
+        <div class="day-num">22</div>
+        <div class="day-name">Mon</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>40s</span></li>
+          <li>Ward Off (Peng) <span>45s ea</span></li>
+          <li>Wave Hands Clouds <span>50s</span></li>
+          <li>Warrior I Pose <span>30s ea</span></li>
+          <li>Pigeon Pose <span>40s ea</span></li>
+          <li>Gathering Qi <span>10×</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 23 -->
+      <div class="day-card">
+        <div class="day-num">23</div>
+        <div class="day-name">Tue</div>
+        <ul class="day-exercises">
+          <li>Arm Circles <span>12×</span></li>
+          <li>Parting Wild Mane <span>45s</span></li>
+          <li>Seated Row <span>12×</span></li>
+          <li>Hamstring Stretch <span>35s ea</span></li>
+          <li>Seated Twist <span>30s ea</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 24 -->
+      <div class="day-card">
+        <div class="day-num">24</div>
+        <div class="day-name">Wed</div>
+        <ul class="day-exercises">
+          <li>Neck Rolls <span>30s</span></li>
+          <li>Repulse the Monkey <span>50s</span></li>
+          <li>Goddess Squat <span>15×</span></li>
+          <li>Single Leg Hold <span>20s ea</span></li>
+          <li>Eagle Arms <span>25s ea</span></li>
+          <li>Hip Opener <span>40s ea</span></li>
+          <li>Gathering Qi <span>10×</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 25 -->
+      <div class="day-card">
+        <div class="day-num">25</div>
+        <div class="day-name">Thu</div>
+        <ul class="day-exercises">
+          <li>Seated March <span>40s</span></li>
+          <li>Full Sequence Flow:</li>
+          <li>Cloud Hands <span>50s</span></li>
+          <li>Brush Knee <span>50s</span></li>
+          <li>Wave Hands Clouds <span>50s</span></li>
+          <li>Forward Fold <span>40s</span></li>
+          <li>Gathering Qi <span>10×</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 26 REST -->
+      <div class="day-card rest">
+        <div class="day-num">26</div>
+        <div class="day-name">Fri</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Rest Day</div>
+        </div>
+      </div>
+      <!-- Day 27 -->
+      <div class="day-card">
+        <div class="day-num">27</div>
+        <div class="day-name">Sat</div>
+        <ul class="day-exercises">
+          <li>Arm Circles <span>12×</span></li>
+          <li>Warrior I Pose <span>35s ea</span></li>
+          <li>Parting Wild Mane <span>50s</span></li>
+          <li>Pigeon Pose <span>40s ea</span></li>
+          <li>Seated Cat-Cow <span>50s</span></li>
+          <li>Seated Chest Opener <span>12×</span></li>
+          <li>Gathering Qi <span>10×</span></li>
+          <li>Seated Savasana <span>2 min</span></li>
+        </ul>
+        <div class="day-check"></div>
+      </div>
+      <!-- Day 28 REST -->
+      <div class="day-card rest">
+        <div class="day-num">28</div>
+        <div class="day-name">Sun</div>
+        <div class="rest-label">
+          <div class="rest-kanji">休</div>
+          <div class="rest-text">Completion Day<br>— You Did It</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ PROGRESS JOURNAL ══════════ -->
+<div class="tracker">
+  <div class="section-label">Reflection</div>
+  <h2>4-Week Progress Journal</h2>
+  <p class="tracker-intro">After each week, take a moment to reflect. Honest notes — not just physical — help you stay connected to why you started.</p>
+  <table class="tracker-table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Theme</th>
+        <th>Days Completed</th>
+        <th>Energy Level (1–10)</th>
+        <th>What felt different?</th>
+        <th>Any challenges?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td>Rooting</td>
+        <td>___ / 5</td>
+        <td>___</td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td>Flowing</td>
+        <td>___ / 5</td>
+        <td>___</td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td>Expanding</td>
+        <td>___ / 5</td>
+        <td>___</td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td>Integrating</td>
+        <td>___ / 5</td>
+        <td>___</td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+        <td><span class="tracker-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:32px; padding:24px; background:var(--rice); border-radius:4px; max-width:600px;">
+    <div class="section-label" style="margin-bottom:8px;">After 28 Days</div>
+    <p style="font-family:'Noto Serif Display',serif; font-style:italic; font-size:16px; color:var(--ink); line-height:1.7;">
+      "The goal of Tai Chi is not to peak, but to continue. If this program helped — begin again. The second round will feel entirely different."
+    </p>
+    <p style="font-size:11px; color:var(--stone); margin-top:12px;">Continue with Week 4's full-flow sessions, or repeat the entire program. Many practitioners do exactly that.</p>
+  </div>
+</div>
+
+</body>
+</html>
